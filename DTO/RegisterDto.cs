@@ -14,5 +14,7 @@ namespace JAP_Task_1_MoviesApi.DTO
         [Required]
         [StringLength(8, MinimumLength = 4)]
         public string Password { get; set; }
+        //public string FirstName { get; set; }
+        //public string LastName { get; set; }
     }
 }

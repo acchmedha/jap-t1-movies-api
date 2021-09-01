@@ -42,6 +42,8 @@ namespace JAP_Task_1_MoviesApi.Controllers
             {
                 Username = user.Username,
                 Token = _tokenService.CreateToken(user)
+                //FirstName = user.FirstName,
+                //LastName = user.LastName
             };
         }
 
@@ -64,6 +66,8 @@ namespace JAP_Task_1_MoviesApi.Controllers
             {
                 Username = user.Username,
                 Token = _tokenService.CreateToken(user)
+                //FirstName = user.FirstName,
+                //LastName = user.LastName
             };
         }
 
