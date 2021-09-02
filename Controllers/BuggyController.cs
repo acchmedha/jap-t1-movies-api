@@ -39,7 +39,9 @@ namespace JAP_Task_1_MoviesApi.Controllers
         {
             var thing = _context.Users.Find(-1);
 
-            return thing.ToString();
+            var thingToSend = thing.ToString();
+
+            return thingToSend;
         }
 
         [HttpGet("bad-request")]

@@ -1,4 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
+using JAP_Task_1_MoviesApi.Helpers;
 using JAP_Task_1_MoviesApi.Interfaces;
 using JAP_Task_1_MoviesApi.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
+            services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
