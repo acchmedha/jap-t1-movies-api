@@ -1,4 +1,5 @@
-﻿using JAP_Task_1_MoviesApi.Data;
+﻿using AutoMapper;
+using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.DTO;
 using JAP_Task_1_MoviesApi.Interfaces;
 using JAP_Task_1_MoviesApi.Models;
@@ -14,26 +15,29 @@ namespace JAP_Task_1_MoviesApi.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
 
-        public AccountController(ApplicationDbContext context, ITokenService tokenService)
+        public AccountController(ApplicationDbContext context, ITokenService tokenService, IMapper mapper)
         {
             _context = context;
             _tokenService = tokenService;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if (await UserExits(registerDto.Username)) return BadRequest("Username is already taken");
+
+            var user = _mapper.Map<User>(registerDto);
             
             using var hmc = new HMACSHA512();
 
-            var user = new User
-            {
-                Username = registerDto.Username.ToLower(),
-                PasswordHash = hmc.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmc.Key
-            };
+
+            user.Username = registerDto.Username.ToLower();
+            user.PasswordHash = hmc.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+            user.PasswordSalt = hmc.Key;
+   
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -41,9 +45,9 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return new UserDto
             {
                 Username = user.Username,
-                Token = _tokenService.CreateToken(user)
-                //FirstName = user.FirstName,
-                //LastName = user.LastName
+                Token = _tokenService.CreateToken(user),
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         }
 
@@ -66,8 +70,6 @@ namespace JAP_Task_1_MoviesApi.Controllers
             {
                 Username = user.Username,
                 Token = _tokenService.CreateToken(user)
-                //FirstName = user.FirstName,
-                //LastName = user.LastName
             };
         }
 

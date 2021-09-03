@@ -13,7 +13,7 @@ namespace JAP_Task_1_MoviesApi.Helpers
 
         public AutoMapperProfiles()
         {
-            CreateMap<RegisterDto, Movie>();
+            CreateMap<RegisterDto, User>();
         }
     }
 }
