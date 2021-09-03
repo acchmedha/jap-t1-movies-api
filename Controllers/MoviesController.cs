@@ -9,6 +9,8 @@ using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Models;
 using JAP_Task_1_MoviesApi.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using JAP_Task_1_MoviesApi.Helpers;
+using JAP_Task_1_MoviesApi.Extensions;
 
 namespace JAP_Task_1_MoviesApi.Controllers
 {
@@ -24,9 +26,13 @@ namespace JAP_Task_1_MoviesApi.Controllers
         // GET: api/Movies
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies([FromQuery]MovieParams movieParams)
         {
-            return Ok(await _movieRepository.GetMoviesAsync());
+            var movies = await _movieRepository.GetMoviesAsync(movieParams);
+
+            Response.AddPaginationHeader(movies.CurrentPage, movies.PageSize, movies.TotalCount, movies.TotalPages);
+
+            return Ok(movies);
         }
 
         // GET: api/Movies/TitleName

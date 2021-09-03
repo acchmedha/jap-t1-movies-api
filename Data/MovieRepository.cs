@@ -1,4 +1,5 @@
-﻿using JAP_Task_1_MoviesApi.Interfaces;
+﻿using JAP_Task_1_MoviesApi.Helpers;
+using JAP_Task_1_MoviesApi.Interfaces;
 using JAP_Task_1_MoviesApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,9 +30,12 @@ namespace JAP_Task_1_MoviesApi.Data
             return await _context.Movies.SingleOrDefaultAsync(x => x.Title == title);
         }
 
-        public async Task<IEnumerable<Movie>> GetMoviesAsync()
+        public async Task<PagedList<Movie>> GetMoviesAsync(MovieParams movieParams)
         {
-            return await _context.Movies.OrderByDescending(p => p.VoteAverage).ToListAsync();
+            //return await _context.Movies.OrderByDescending(p => p.VoteAverage).ToListAsync();
+            var query = _context.Movies.AsNoTracking().OrderByDescending(p => p.VoteAverage);
+
+            return await PagedList<Movie>.CreateAsync(query, movieParams.PageNumber, movieParams.PageSize);
         }
 
         public async Task<bool> SaveAllAsync()
