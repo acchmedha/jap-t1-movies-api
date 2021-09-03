@@ -31,7 +31,7 @@ namespace JAP_Task_1_MoviesApi.Data
 
         public async Task<IEnumerable<Movie>> GetMoviesAsync()
         {
-            return await _context.Movies.ToListAsync();
+            return await _context.Movies.OrderByDescending(p => p.VoteAverage).ToListAsync();
         }
 
         public async Task<bool> SaveAllAsync()
