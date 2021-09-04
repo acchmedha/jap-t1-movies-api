@@ -28,10 +28,17 @@ namespace JAP_Task_1_MoviesApi.Data
             return await _context.Movies.SingleOrDefaultAsync(x => x.Title == title);
         }
 
-        public async Task<PagedList<Movie>> GetMoviesAsync(MovieParams movieParams)
+        public async Task<PagedList<Movie>> GetMoviesAsync(MovieParams movieParams, string search)
         {
-            //return await _context.Movies.OrderByDescending(p => p.VoteAverage).ToListAsync();
-            var query = _context.Movies.AsNoTracking().OrderByDescending(p => p.VoteAverage);
+            var query = from x in _context.Movies select x;
+
+            if(!String.IsNullOrEmpty(search))
+            {
+                query = _context.Movies.AsNoTracking().Where(x => x.Title.ToLower()
+                .Contains(search.ToLower()) || x.Overview.ToLower().Contains(search.ToLower()));
+                    
+            }
+            query = query.OrderByDescending(p => p.VoteAverage);
 
             return await PagedList<Movie>.CreateAsync(query, movieParams.PageNumber, movieParams.PageSize);
         }
