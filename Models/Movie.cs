@@ -13,5 +13,6 @@ namespace JAP_Task_1_MoviesApi.Models
         public string PosterPath { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string Overview { get; set; }
+        public int UserVote { get; set; } = 0;
     }
 }

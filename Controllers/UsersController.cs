@@ -61,7 +61,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!_context.Users.Any(e => e.Id == id))
                 {
                     return NotFound();
                 }
@@ -100,9 +100,5 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return NoContent();
         }
 
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using JAP_Task_1_MoviesApi.Interfaces;
+﻿using JAP_Task_1_MoviesApi.Helpers;
+using JAP_Task_1_MoviesApi.Interfaces;
 using JAP_Task_1_MoviesApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,12 +13,10 @@ namespace JAP_Task_1_MoviesApi.Data
     {
 
         private readonly ApplicationDbContext _context;
-        //private readonly IMapper _mapper;
 
         public MovieRepository(ApplicationDbContext context)
         {
             _context = context;
-            //_mapper = mapper;
         }
         public async Task<Movie> GetMovieByIdAsync(int id)
         {
@@ -29,9 +28,17 @@ namespace JAP_Task_1_MoviesApi.Data
             return await _context.Movies.SingleOrDefaultAsync(x => x.Title == title);
         }
 
-        public async Task<IEnumerable<Movie>> GetMoviesAsync()
+        public async Task<PagedList<Movie>> GetMoviesAsync(MovieParams movieParams)
         {
-            return await _context.Movies.OrderByDescending(p => p.VoteAverage).ToListAsync();
+            //return await _context.Movies.OrderByDescending(p => p.VoteAverage).ToListAsync();
+            var query = _context.Movies.AsNoTracking().OrderByDescending(p => p.VoteAverage);
+
+            return await PagedList<Movie>.CreateAsync(query, movieParams.PageNumber, movieParams.PageSize);
+        }
+
+        public bool MovieExists(int id)
+        {
+            return _context.Users.Any(e => e.Id == id);
         }
 
         public async Task<bool> SaveAllAsync()
@@ -39,9 +46,10 @@ namespace JAP_Task_1_MoviesApi.Data
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public void Update(Movie movie)
+        public async Task UpdateMovieAsync(Movie movie)
         {
             _context.Entry(movie).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }
