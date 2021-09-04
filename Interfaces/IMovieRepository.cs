@@ -9,10 +9,11 @@ namespace JAP_Task_1_MoviesApi.Interfaces
 {
     public interface IMovieRepository
     {
-        void Update(Movie movie);
         Task<bool> SaveAllAsync();
         Task<PagedList<Movie>> GetMoviesAsync(MovieParams movieParams);
         Task<Movie> GetMovieByIdAsync(int id);
         Task<Movie> GetMovieByTitleAsync(string title);
+        Task UpdateMovieAsync(Movie movie);
+        bool MovieExists(int id);
     }
 }

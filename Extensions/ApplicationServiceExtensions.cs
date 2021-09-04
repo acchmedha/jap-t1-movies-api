@@ -1,4 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
+using JAP_Task_1_MoviesApi.Errors;
 using JAP_Task_1_MoviesApi.Helpers;
 using JAP_Task_1_MoviesApi.Interfaces;
 using JAP_Task_1_MoviesApi.Services;

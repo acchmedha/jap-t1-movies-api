@@ -13,12 +13,10 @@ namespace JAP_Task_1_MoviesApi.Data
     {
 
         private readonly ApplicationDbContext _context;
-        //private readonly IMapper _mapper;
 
         public MovieRepository(ApplicationDbContext context)
         {
             _context = context;
-            //_mapper = mapper;
         }
         public async Task<Movie> GetMovieByIdAsync(int id)
         {
@@ -38,14 +36,20 @@ namespace JAP_Task_1_MoviesApi.Data
             return await PagedList<Movie>.CreateAsync(query, movieParams.PageNumber, movieParams.PageSize);
         }
 
+        public bool MovieExists(int id)
+        {
+            return _context.Users.Any(e => e.Id == id);
+        }
+
         public async Task<bool> SaveAllAsync()
         {
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public void Update(Movie movie)
+        public async Task UpdateMovieAsync(Movie movie)
         {
             _context.Entry(movie).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }

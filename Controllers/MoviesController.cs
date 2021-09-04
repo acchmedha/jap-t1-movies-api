@@ -49,5 +49,35 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
             return movie;
         }
+
+        // PUT: api/Movies/5
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<IActionResult> PutMovie(int id, Movie movie)
+        {
+            if (id != movie.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                await _movieRepository.UpdateMovieAsync(movie);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_movieRepository.MovieExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok("Movies updated");
+        }
+
     }
 }

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace JAP_Task_1_MoviesApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210903070738_AddedMoreSeedData")]
-    partial class AddedMoreSeedData
+    [Migration("20210903234900_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,9 @@ namespace JAP_Task_1_MoviesApi.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
+                    b.Property<int>("UserVote")
+                        .HasColumnType("integer");
+
                     b.Property<double>("VoteAverage")
                         .HasColumnType("double precision");
 
@@ -55,6 +58,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/iXbWpCkIauBMStSTUT9v4GXvdgH.jpg",
                             ReleaseDate = new DateTime(2021, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Suicide Squad",
+                            UserVote = 0,
                             VoteAverage = 8.0
                         },
                         new
@@ -64,6 +68,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/cP7odDzzFBD9ycxj2laTeFWGLjD.jpg",
                             ReleaseDate = new DateTime(2021, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Sweet Girl",
+                            UserVote = 0,
                             VoteAverage = 7.0
                         },
                         new
@@ -73,15 +78,17 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
                             ReleaseDate = new DateTime(2021, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Jungle Cruise",
+                            UserVote = 0,
                             VoteAverage = 7.9000000000000004
                         },
                         new
                         {
                             Id = 4,
-                            Overview = "Ryder and the pups are called to Adventure City to stop Mayor Humdinger from turning the bustling metropolis into a state of chaos.",
+                            Overview = "Ryder and the pups are called to Adventure City to stop Mayor Humdinger from turning the bustling metropolis into a state of chaos...",
                             PosterPath = "https://image.tmdb.org/t/p/w500/ic0intvXZSfBlYPIvWXpU1ivUCO.jpg",
                             ReleaseDate = new DateTime(2021, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "PAW Patrol: The Movie",
+                            UserVote = 0,
                             VoteAverage = 8.0999999999999996
                         },
                         new
@@ -91,6 +98,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/wrlQnKHLCBheXMNWotyr5cVDqNM.jpg",
                             ReleaseDate = new DateTime(2021, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Eggs Run",
+                            UserVote = 0,
                             VoteAverage = 8.4000000000000004
                         },
                         new
@@ -100,6 +108,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
                             ReleaseDate = new DateTime(2021, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Black Widow",
+                            UserVote = 0,
                             VoteAverage = 7.7999999999999998
                         },
                         new
@@ -109,6 +118,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg",
                             ReleaseDate = new DateTime(2021, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Space Jam: A New Legacy",
+                            UserVote = 0,
                             VoteAverage = 7.5
                         },
                         new
@@ -118,6 +128,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/7p0O4mKYLIhU2E5Zcq9Z3vOZ4e9.jpg",
                             ReleaseDate = new DateTime(2021, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Narco Sub",
+                            UserVote = 0,
                             VoteAverage = 7.0999999999999996
                         },
                         new
@@ -127,6 +138,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/hEqw9swA8gFJuNjgWYEypwZfkZg.jpg",
                             ReleaseDate = new DateTime(2021, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Free Guy",
+                            UserVote = 0,
                             VoteAverage = 7.7999999999999998
                         },
                         new
@@ -136,6 +148,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/niw2AKHz6XmwiRMLWaoyAOAti0G.jpg",
                             ReleaseDate = new DateTime(2021, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Infinite",
+                            UserVote = 0,
                             VoteAverage = 7.5
                         },
                         new
@@ -145,6 +158,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/fBJducGBcmrcIOQdhm4BUBNDiMu.jpg",
                             ReleaseDate = new DateTime(2021, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Beckett",
+                            UserVote = 0,
                             VoteAverage = 6.5
                         },
                         new
@@ -154,6 +168,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
                             ReleaseDate = new DateTime(2021, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "F9",
+                            UserVote = 0,
                             VoteAverage = 7.5999999999999996
                         },
                         new
@@ -163,6 +178,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/kv2Qk9MKFFQo4WQPaYta599HkJP.jpg",
                             ReleaseDate = new DateTime(2021, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Boss Baby",
+                            UserVote = 0,
                             VoteAverage = 7.7999999999999998
                         },
                         new
@@ -172,6 +188,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/zvGC5jX5wQmU1GgPc0VGZz7Mtcs.jpg",
                             ReleaseDate = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "El mesero",
+                            UserVote = 0,
                             VoteAverage = 8.5
                         },
                         new
@@ -181,6 +198,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/jTswp6KyDYKtvC52GbHagrZbGvD.jpg",
                             ReleaseDate = new DateTime(2021, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Luca",
+                            UserVote = 0,
                             VoteAverage = 8.0999999999999996
                         },
                         new
@@ -190,6 +208,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg",
                             ReleaseDate = new DateTime(2021, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Tomorrow War",
+                            UserVote = 0,
                             VoteAverage = 8.1999999999999993
                         },
                         new
@@ -199,6 +218,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/oxNoVgbu2v9ETL93Kri1pw8osYf.jpg",
                             ReleaseDate = new DateTime(2021, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Breathless",
+                            UserVote = 0,
                             VoteAverage = 7.0999999999999996
                         },
                         new
@@ -208,6 +228,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/ttpKJ7XQxDZV252KNEHXtykYT41.jpg",
                             ReleaseDate = new DateTime(2021, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Last Mercenary",
+                            UserVote = 0,
                             VoteAverage = 7.0
                         },
                         new
@@ -217,6 +238,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/mab5wPeGVjbMyYMzyzfdKKnG9cl.jpg",
                             ReleaseDate = new DateTime(2021, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Loud House Movie",
+                            UserVote = 0,
                             VoteAverage = 8.5
                         },
                         new
@@ -226,6 +248,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/gYZAHan5CHPFXORpQMvOjCTug4E.jpg",
                             ReleaseDate = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Jolt",
+                            UserVote = 0,
                             VoteAverage = 6.7999999999999998
                         });
                 });
