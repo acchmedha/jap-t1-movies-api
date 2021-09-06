@@ -4,6 +4,13 @@ The dotnet/core repository is a good starting point for .NET Core.
 
 The latest major release is [.NET 5.0](release-notes/5.0/README.md). The latest patch updates are listed in [.NET Core release notes](release-notes/README.md).
 
+## Setting Up a Project
+Run the application:
+```
+dotnet watch run
+```
+Navigate to:  `http://localhost:5001/swagger/index.html`
+
 ## .NET Core Releases
 
 * [Download the latest .NET Core SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
