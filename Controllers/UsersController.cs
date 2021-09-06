@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JAP_Task_1_MoviesApi.Controllers
 {
@@ -21,12 +22,14 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
         // GET: api/Users
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -58,7 +61,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!_context.Users.Any(e => e.Id == id))
                 {
                     return NotFound();
                 }
@@ -72,7 +75,6 @@ namespace JAP_Task_1_MoviesApi.Controllers
         }
 
         // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
@@ -98,9 +100,5 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return NoContent();
         }
 
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
     }
 }

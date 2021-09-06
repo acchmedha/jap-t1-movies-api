@@ -1,4 +1,5 @@
-﻿using JAP_Task_1_MoviesApi.Models;
+﻿using JAP_Task_1_MoviesApi.Extensions;
+using JAP_Task_1_MoviesApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace JAP_Task_1_MoviesApi.Data
@@ -10,5 +11,11 @@ namespace JAP_Task_1_MoviesApi.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
     }
 }

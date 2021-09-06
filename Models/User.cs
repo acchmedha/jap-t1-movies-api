@@ -11,5 +11,9 @@ namespace JAP_Task_1_MoviesApi.Models
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
     }
 }
