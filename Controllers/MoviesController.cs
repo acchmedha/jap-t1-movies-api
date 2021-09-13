@@ -26,9 +26,9 @@ namespace JAP_Task_1_MoviesApi.Controllers
         // GET: api/Movies
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies([FromQuery]MovieParams movieParams)
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies([FromQuery]MovieParams movieParams, string search)
         {
-            var movies = await _movieRepository.GetMoviesAsync(movieParams);
+            var movies = await _movieRepository.GetMoviesAsync(movieParams, search);
 
             Response.AddPaginationHeader(movies.CurrentPage, movies.PageSize, movies.TotalCount, movies.TotalPages);
 
