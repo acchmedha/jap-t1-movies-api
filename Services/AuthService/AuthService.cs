@@ -1,5 +1,4 @@
-﻿using JAP_Task_1_MoviesApi.Interfaces;
-using JAP_Task_1_MoviesApi.Models;
+﻿using JAP_Task_1_MoviesApi.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -8,16 +7,25 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace JAP_Task_1_MoviesApi.Services
+namespace JAP_Task_1_MoviesApi.Services.AuthService
 {
-    public class TokenService : ITokenService
+    public class AuthService : IAuthService
     {
+
         private readonly SymmetricSecurityKey _key;
-        public TokenService(IConfiguration config)
+        public AuthService(IConfiguration config)
         {
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
 
+        public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
+        }
 
         public string CreateToken(User user)
         {

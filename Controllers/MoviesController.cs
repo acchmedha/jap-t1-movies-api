@@ -2,25 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Models;
-using JAP_Task_1_MoviesApi.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using JAP_Task_1_MoviesApi.Helpers;
 using JAP_Task_1_MoviesApi.Extensions;
+using JAP_Task_1_MoviesApi.Services.MovieService;
 
 namespace JAP_Task_1_MoviesApi.Controllers
 {
     public class MoviesController : BaseApiController
     {
-        private readonly IMovieRepository _movieRepository;
+        private readonly IMovieService _movieService;
 
-        public MoviesController(IMovieRepository movieRepository)
+        public MoviesController(IMovieService movieService)
         {
-            _movieRepository = movieRepository;
+            _movieService = movieService;
         }
 
         // GET: api/Movies
@@ -28,7 +26,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
         [Authorize]
         public async Task<ActionResult<IEnumerable<Movie>>> GetMovies([FromQuery]MovieParams movieParams, string search)
         {
-            var movies = await _movieRepository.GetMoviesAsync(movieParams, search);
+            var movies = await _movieService.GetMoviesAsync(movieParams, search);
 
             Response.AddPaginationHeader(movies.CurrentPage, movies.PageSize, movies.TotalCount, movies.TotalPages);
 
@@ -40,7 +38,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
         [Authorize]
         public async Task<ActionResult<Movie>> GetMovie(string title)
         {
-            var movie = await _movieRepository.GetMovieByTitleAsync(title);
+            var movie = await _movieService.GetMovieByTitleAsync(title);
 
             if (movie == null)
             {
@@ -62,11 +60,11 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
             try
             {
-                await _movieRepository.UpdateMovieAsync(movie);
+                await _movieService.UpdateMovieAsync(movie);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_movieRepository.MovieExists(id))
+                if (!_movieService.MovieExists(id))
                 {
                     return NotFound();
                 }

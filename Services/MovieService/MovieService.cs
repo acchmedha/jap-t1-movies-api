@@ -1,15 +1,15 @@
-﻿using JAP_Task_1_MoviesApi.Helpers;
-using JAP_Task_1_MoviesApi.Interfaces;
+﻿using JAP_Task_1_MoviesApi.Data;
+using JAP_Task_1_MoviesApi.Helpers;
 using JAP_Task_1_MoviesApi.Models;
+using JAP_Task_1_MoviesApi.Services.MovieService;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JAP_Task_1_MoviesApi.Data
+namespace JAP_Task_1_MoviesApi.Services.MovieService
 {
-    public class MovieRepository : IMovieRepository
+    public class MovieRepository : IMovieService
     {
 
         private readonly ApplicationDbContext _context;
@@ -38,7 +38,7 @@ namespace JAP_Task_1_MoviesApi.Data
                 .Contains(search.ToLower()) || x.Overview.ToLower().Contains(search.ToLower()));
                     
             }
-            query = query.OrderByDescending(p => p.VoteAverage);
+            //query = query.OrderByDescending(p => p.VoteAverage);
 
             return await PagedList<Movie>.CreateAsync(query, movieParams.PageNumber, movieParams.PageSize);
         }

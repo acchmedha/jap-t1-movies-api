@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.DTO;
-using JAP_Task_1_MoviesApi.Interfaces;
 using JAP_Task_1_MoviesApi.Models;
+using JAP_Task_1_MoviesApi.Services.AuthService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
@@ -14,13 +14,13 @@ namespace JAP_Task_1_MoviesApi.Controllers
     public class AccountController : BaseApiController
     {
         private readonly ApplicationDbContext _context;
-        private readonly ITokenService _tokenService;
+        private readonly IAuthService _authService;
         private readonly IMapper _mapper;
 
-        public AccountController(ApplicationDbContext context, ITokenService tokenService, IMapper mapper)
+        public AccountController(ApplicationDbContext context, IAuthService authService, IMapper mapper)
         {
             _context = context;
-            _tokenService = tokenService;
+            _authService = authService;
             _mapper = mapper;
         }
 
@@ -45,7 +45,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return new UserDto
             {
                 Username = user.Username,
-                Token = _tokenService.CreateToken(user),
+                Token = _authService.CreateToken(user),
                 FirstName = user.FirstName,
                 LastName = user.LastName
             };
@@ -69,7 +69,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return new UserDto
             {
                 Username = user.Username,
-                Token = _tokenService.CreateToken(user)
+                Token = _authService.CreateToken(user)
             };
         }
 

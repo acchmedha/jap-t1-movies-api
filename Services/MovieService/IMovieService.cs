@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JAP_Task_1_MoviesApi.Interfaces
+namespace JAP_Task_1_MoviesApi.Services.MovieService
 {
-    public interface IMovieRepository
+    public interface IMovieService
     {
         Task<bool> SaveAllAsync();
         Task<PagedList<Movie>> GetMoviesAsync(MovieParams movieParams, string search);
