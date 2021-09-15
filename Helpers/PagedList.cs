@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JAP_Task_1_MoviesApi.DTO;
+using JAP_Task_1_MoviesApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +24,14 @@ namespace JAP_Task_1_MoviesApi.Helpers
         public int PageSize { get; set; }
         public int TotalCount { get; set; }
 
-        public static async Task<PagedList<T>> CreateAsync(IQueryable<T> source, int pageNumber, int pageSize)
+        public static PagedList<MovieDto> Create(List<MovieDto> source, int pageNumber, int pageSize)
         {
-            var count = await source.CountAsync();
-            var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-            return new PagedList<T>(items, count, pageNumber, pageSize);
+            var count = source.Count;
+            var items = source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new PagedList<MovieDto>(items, count, pageNumber, pageSize);
 
         }
+
     }
 
 }

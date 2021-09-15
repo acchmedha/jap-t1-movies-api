@@ -21,15 +21,15 @@ namespace JAP_Task_1_MoviesApi.Migrations
 
             modelBuilder.Entity("ActorMovie", b =>
                 {
-                    b.Property<int>("ActorId")
+                    b.Property<int>("ActorsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieId")
+                    b.Property<int>("MoviesId")
                         .HasColumnType("int");
 
-                    b.HasKey("ActorId", "MovieId");
+                    b.HasKey("ActorsId", "MoviesId");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex("MoviesId");
 
                     b.ToTable("ActorMovie");
                 });
@@ -1323,11 +1323,11 @@ namespace JAP_Task_1_MoviesApi.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 9, 15, 18, 12, 3, 210, DateTimeKind.Local).AddTicks(9981),
+                            CreatedAt = new DateTime(2021, 9, 15, 21, 40, 17, 840, DateTimeKind.Local).AddTicks(6044),
                             FirstName = "Admin",
                             LastName = "Admin",
-                            PasswordHash = new byte[] { 107, 124, 56, 80, 223, 173, 216, 166, 108, 46, 147, 53, 170, 112, 246, 79, 208, 110, 203, 192, 133, 229, 61, 250, 47, 177, 168, 218, 54, 104, 223, 115, 176, 139, 96, 21, 188, 14, 66, 86, 191, 25, 46, 11, 35, 107, 43, 179, 73, 204, 170, 66, 38, 126, 53, 154, 57, 132, 231, 227, 198, 139, 28, 19 },
-                            PasswordSalt = new byte[] { 52, 222, 188, 216, 174, 134, 150, 120, 113, 44, 56, 28, 241, 216, 19, 23, 24, 166, 164, 140, 169, 14, 222, 85, 119, 175, 134, 116, 13, 217, 201, 125, 249, 145, 65, 201, 233, 62, 61, 158, 13, 50, 145, 245, 123, 92, 79, 75, 143, 3, 110, 234, 252, 128, 79, 104, 223, 29, 239, 229, 193, 249, 158, 251, 199, 103, 62, 177, 158, 74, 160, 94, 223, 55, 120, 123, 146, 22, 55, 234, 159, 199, 79, 141, 134, 90, 101, 150, 250, 231, 34, 189, 123, 73, 109, 24, 52, 112, 89, 229, 188, 48, 121, 4, 26, 132, 129, 202, 73, 17, 116, 225, 233, 229, 84, 74, 79, 230, 21, 57, 80, 147, 208, 255, 63, 146, 111, 111 },
+                            PasswordHash = new byte[] { 204, 105, 9, 92, 53, 220, 143, 225, 194, 216, 51, 117, 166, 143, 17, 222, 216, 187, 78, 220, 242, 123, 0, 30, 25, 63, 35, 157, 235, 178, 94, 158, 32, 137, 56, 240, 56, 196, 124, 174, 79, 94, 72, 162, 51, 157, 9, 226, 106, 44, 173, 44, 131, 110, 193, 117, 187, 137, 120, 122, 14, 175, 37, 121 },
+                            PasswordSalt = new byte[] { 100, 149, 125, 130, 50, 189, 254, 221, 245, 132, 160, 208, 124, 65, 42, 20, 99, 205, 185, 172, 159, 44, 72, 233, 249, 77, 91, 114, 195, 171, 14, 9, 138, 218, 111, 96, 199, 45, 248, 197, 28, 142, 239, 156, 180, 108, 54, 42, 157, 177, 139, 31, 220, 206, 251, 250, 40, 164, 24, 28, 21, 187, 134, 139, 242, 112, 157, 7, 2, 133, 204, 96, 155, 158, 40, 195, 46, 164, 180, 163, 238, 89, 91, 56, 229, 178, 231, 190, 193, 44, 147, 105, 17, 76, 134, 234, 147, 161, 134, 98, 95, 155, 235, 61, 89, 113, 5, 37, 35, 53, 0, 205, 138, 79, 161, 232, 143, 215, 198, 73, 56, 168, 141, 186, 170, 2, 16, 39 },
                             Username = "admin"
                         });
                 });
@@ -1336,13 +1336,13 @@ namespace JAP_Task_1_MoviesApi.Migrations
                 {
                     b.HasOne("JAP_Task_1_MoviesApi.Models.Actor", null)
                         .WithMany()
-                        .HasForeignKey("ActorId")
+                        .HasForeignKey("ActorsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("JAP_Task_1_MoviesApi.Models.Movie", null)
                         .WithMany()
-                        .HasForeignKey("MovieId")
+                        .HasForeignKey("MoviesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

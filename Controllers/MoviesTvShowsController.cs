@@ -9,36 +9,54 @@ using Microsoft.AspNetCore.Authorization;
 using JAP_Task_1_MoviesApi.Helpers;
 using JAP_Task_1_MoviesApi.Extensions;
 using JAP_Task_1_MoviesApi.Services.MovieService;
+using JAP_Task_1_MoviesApi.DTO;
 
 namespace JAP_Task_1_MoviesApi.Controllers
 {
-    public class MoviesController : BaseApiController
+    public class MoviesTvShowsController : BaseApiController
     {
         private readonly IMovieService _movieService;
 
-        public MoviesController(IMovieService movieService)
+        public MoviesTvShowsController(IMovieService movieService)
         {
             _movieService = movieService;
         }
 
-        // GET: api/Movies
-        [HttpGet]
+        // GET: api/MoviesTvShows/movies
+        [HttpGet("movies")]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies([FromQuery]MovieParams movieParams, string search)
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies([FromQuery] PaginationDto pagination)
         {
-            var movies = await _movieService.GetMoviesAsync(movieParams, search);
-
-            Response.AddPaginationHeader(movies.CurrentPage, movies.PageSize, movies.TotalCount, movies.TotalPages);
-
+            var movies = await _movieService.GetMoviesOrTvShows(0, pagination);
             return Ok(movies);
         }
 
-        // GET: api/Movies/TitleName
-        [HttpGet("{title}")]
+        // GET: api/MoviesTvShows/tvshows
+        [HttpGet("tv-shows")]
         [Authorize]
-        public async Task<ActionResult<Movie>> GetMovie(string title)
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetTvShows([FromQuery] PaginationDto pagination)
         {
-            var movie = await _movieService.GetMovieByTitleAsync(title);
+            var tvShows = await _movieService.GetMoviesOrTvShows(1, pagination);
+            return Ok(tvShows);
+        }
+
+        // GET: api/MoviesTvShows
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<List<MovieDto>>> GetFilteredMovies([FromQuery] PaginationDto pagination, string search = null)
+        {
+            if (search == null) return Ok(await _movieService.GetMoviesOrTvShows(0, pagination));
+            return Ok(await _movieService.GetFilteredMovies(search));
+        }
+
+
+
+        // GET: api/MoviesTvShows/id
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<ActionResult<MovieFullInfoDto>> GetMovie(int id)
+        {
+            var movie = await _movieService.GetMovieById(id);
 
             if (movie == null)
             {
@@ -48,7 +66,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return movie;
         }
 
-        // PUT: api/Movies/5
+        // PUT: api/MoviesTvShows/5
         [HttpPut("{id}")]
         [Authorize]
         public async Task<IActionResult> PutMovie(int id, Movie movie)

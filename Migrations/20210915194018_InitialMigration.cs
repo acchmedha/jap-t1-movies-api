@@ -60,21 +60,21 @@ namespace JAP_Task_1_MoviesApi.Migrations
                 name: "ActorMovie",
                 columns: table => new
                 {
-                    ActorId = table.Column<int>(type: "int", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false)
+                    ActorsId = table.Column<int>(type: "int", nullable: false),
+                    MoviesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ActorMovie", x => new { x.ActorId, x.MovieId });
+                    table.PrimaryKey("PK_ActorMovie", x => new { x.ActorsId, x.MoviesId });
                     table.ForeignKey(
-                        name: "FK_ActorMovie_Actors_ActorId",
-                        column: x => x.ActorId,
+                        name: "FK_ActorMovie_Actors_ActorsId",
+                        column: x => x.ActorsId,
                         principalTable: "Actors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ActorMovie_Movies_MovieId",
-                        column: x => x.MovieId,
+                        name: "FK_ActorMovie_Movies_MoviesId",
+                        column: x => x.MoviesId,
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -287,7 +287,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "FirstName", "LastName", "PasswordHash", "PasswordSalt", "Username" },
-                values: new object[] { 1, new DateTime(2021, 9, 15, 18, 12, 3, 210, DateTimeKind.Local).AddTicks(9981), "Admin", "Admin", new byte[] { 107, 124, 56, 80, 223, 173, 216, 166, 108, 46, 147, 53, 170, 112, 246, 79, 208, 110, 203, 192, 133, 229, 61, 250, 47, 177, 168, 218, 54, 104, 223, 115, 176, 139, 96, 21, 188, 14, 66, 86, 191, 25, 46, 11, 35, 107, 43, 179, 73, 204, 170, 66, 38, 126, 53, 154, 57, 132, 231, 227, 198, 139, 28, 19 }, new byte[] { 52, 222, 188, 216, 174, 134, 150, 120, 113, 44, 56, 28, 241, 216, 19, 23, 24, 166, 164, 140, 169, 14, 222, 85, 119, 175, 134, 116, 13, 217, 201, 125, 249, 145, 65, 201, 233, 62, 61, 158, 13, 50, 145, 245, 123, 92, 79, 75, 143, 3, 110, 234, 252, 128, 79, 104, 223, 29, 239, 229, 193, 249, 158, 251, 199, 103, 62, 177, 158, 74, 160, 94, 223, 55, 120, 123, 146, 22, 55, 234, 159, 199, 79, 141, 134, 90, 101, 150, 250, 231, 34, 189, 123, 73, 109, 24, 52, 112, 89, 229, 188, 48, 121, 4, 26, 132, 129, 202, 73, 17, 116, 225, 233, 229, 84, 74, 79, 230, 21, 57, 80, 147, 208, 255, 63, 146, 111, 111 }, "admin" });
+                values: new object[] { 1, new DateTime(2021, 9, 15, 21, 40, 17, 840, DateTimeKind.Local).AddTicks(6044), "Admin", "Admin", new byte[] { 204, 105, 9, 92, 53, 220, 143, 225, 194, 216, 51, 117, 166, 143, 17, 222, 216, 187, 78, 220, 242, 123, 0, 30, 25, 63, 35, 157, 235, 178, 94, 158, 32, 137, 56, 240, 56, 196, 124, 174, 79, 94, 72, 162, 51, 157, 9, 226, 106, 44, 173, 44, 131, 110, 193, 117, 187, 137, 120, 122, 14, 175, 37, 121 }, new byte[] { 100, 149, 125, 130, 50, 189, 254, 221, 245, 132, 160, 208, 124, 65, 42, 20, 99, 205, 185, 172, 159, 44, 72, 233, 249, 77, 91, 114, 195, 171, 14, 9, 138, 218, 111, 96, 199, 45, 248, 197, 28, 142, 239, 156, 180, 108, 54, 42, 157, 177, 139, 31, 220, 206, 251, 250, 40, 164, 24, 28, 21, 187, 134, 139, 242, 112, 157, 7, 2, 133, 204, 96, 155, 158, 40, 195, 46, 164, 180, 163, 238, 89, 91, 56, 229, 178, 231, 190, 193, 44, 147, 105, 17, 76, 134, 234, 147, 161, 134, 98, 95, 155, 235, 61, 89, 113, 5, 37, 35, 53, 0, 205, 138, 79, 161, 232, 143, 215, 198, 73, 56, 168, 141, 186, 170, 2, 16, 39 }, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Ratings",
@@ -314,7 +314,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "ActorMovie",
-                columns: new[] { "ActorId", "MovieId" },
+                columns: new[] { "ActorsId", "MoviesId" },
                 values: new object[,]
                 {
                 { 1, 1 },
@@ -504,9 +504,9 @@ namespace JAP_Task_1_MoviesApi.Migrations
             });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ActorMovie_MovieId",
+                name: "IX_ActorMovie_MoviesId",
                 table: "ActorMovie",
-                column: "MovieId");
+                column: "MoviesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_MovieId",

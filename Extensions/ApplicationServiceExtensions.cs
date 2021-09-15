@@ -22,7 +22,6 @@ namespace JAP_Task_1_MoviesApi.Extensions
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                //options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
 
