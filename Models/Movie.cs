@@ -12,6 +12,7 @@ namespace JAP_Task_1_MoviesApi.Models
         public string PosterPath { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string Overview { get; set; }
+        public short Type { get; set; }
         public List<Actor> Actor { get; set; }
         public List<Rating> Ratings { get; set; }
     }
