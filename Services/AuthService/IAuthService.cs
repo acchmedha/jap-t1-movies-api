@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JAP_Task_1_MoviesApi.Interfaces
+namespace JAP_Task_1_MoviesApi.Services.AuthService
 {
-    public interface ITokenService
+    public interface IAuthService
     {
         string CreateToken(User user);
     }

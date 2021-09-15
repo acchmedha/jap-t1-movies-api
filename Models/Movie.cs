@@ -9,10 +9,10 @@ namespace JAP_Task_1_MoviesApi.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public double VoteAverage { get; set; }
         public string PosterPath { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string Overview { get; set; }
-        public int UserVote { get; set; } = 0;
+        public List<Actor> Actor { get; set; }
+        public List<Rating> Ratings { get; set; }
     }
 }

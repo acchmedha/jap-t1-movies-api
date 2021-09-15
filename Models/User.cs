@@ -14,6 +14,7 @@ namespace JAP_Task_1_MoviesApi.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public List<Rating> Ratings { get; set; }
 
     }
 }
