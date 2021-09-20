@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace JAP_Task_1_MoviesApi.Models
 {
-    public class MovieEntity
+    public class VideoEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }

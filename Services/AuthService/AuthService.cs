@@ -15,9 +15,9 @@ namespace JAP_Task_1_MoviesApi.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly MoviesAppDbContext _context;
         private readonly IConfiguration _config;
-        public AuthService(ApplicationDbContext context, IConfiguration config)
+        public AuthService(MoviesAppDbContext context, IConfiguration config)
         {
             _context = context;
             _config = config;
@@ -124,11 +124,11 @@ namespace JAP_Task_1_MoviesApi.Services
                 new Claim(ClaimTypes.Name, user.Username)
             };
             
-            SymmetricSecurityKey _key = new(
+            SymmetricSecurityKey key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value)
             );
 
-            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

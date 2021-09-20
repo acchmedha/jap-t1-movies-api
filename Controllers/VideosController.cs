@@ -13,13 +13,13 @@ namespace JAP_Task_1_MoviesApi.Controllers
 {
     public class VideosController : BaseApiController
     {
-        private readonly IMovieService _movieService;
-        public VideosController(IMovieService movieService)
+        private readonly IVideoService _movieService;
+        public VideosController(IVideoService movieService)
         {
             _movieService = movieService;
         }
 
-        // GET: api/MoviesTvShows/movies
+        // GET: api/videos/movies
         [HttpGet("movies")]
         [Authorize]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies([FromQuery] PaginationDto pagination)
@@ -28,7 +28,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return Ok(movies);
         }
 
-        // GET: api/MoviesTvShows/tvshows
+        // GET: api/videos/tvshows
         [HttpGet("tv-shows")]
         [Authorize]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetTvShows([FromQuery] PaginationDto pagination, string search = null)
@@ -37,7 +37,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return Ok(await _movieService.GetFilteredMovies(search));
         }
 
-        // GET: api/MoviesTvShows
+        // GET: api/videos
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<List<MovieDto>>> GetFilteredMovies([FromQuery] PaginationDto pagination, string search = null, int type = 0)

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JAP_Task_1_MoviesApi.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(Data.MoviesAppDbContext))]
     [Migration("20210915194018_InitialMigration")]
     partial class InitialMigration
     {

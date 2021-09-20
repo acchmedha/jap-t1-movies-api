@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JAP_Task_1_MoviesApi.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class MoviesAppDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public MoviesAppDbContext(DbContextOptions options) : base(options)
         {
         }
 
         public DbSet<UserEntity> Users { get; set; }
-        public DbSet<MovieEntity> Movies { get; set; }
+        public DbSet<VideoEntity> Movies { get; set; }
         public DbSet<ActorEntity> Actors { get; set; }
         public DbSet<RatingEntity> Ratings { get; set; }
 

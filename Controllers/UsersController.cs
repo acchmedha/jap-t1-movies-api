@@ -12,8 +12,8 @@ namespace JAP_Task_1_MoviesApi.Controllers
 {
     public class UsersController : BaseApiController
     {
-        private readonly ApplicationDbContext _context;
-        public UsersController(ApplicationDbContext context)
+        private readonly Data.MoviesAppDbContext _context;
+        public UsersController(Data.MoviesAppDbContext context)
         {
             _context = context;
         }

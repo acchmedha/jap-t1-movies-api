@@ -3,30 +3,23 @@ using JAP_Task_1_MoviesApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace JAP_Task_1_MoviesApi.Services
 {
     public class RatingService : IRatingService
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public RatingService(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+        private readonly MoviesAppDbContext _context;
+        public RatingService(MoviesAppDbContext context)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;
         }
-        private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-        public async Task<ServiceResponse<bool>> AddRating(double AddValue, int AddMovieId)
+        public async Task<ServiceResponse<bool>> AddRating(double AddValue, int AddVideoId, int userId)
         {
             ServiceResponse<bool> response = new();
 
-            var AddUserId = GetUserId();
-            var userAlreadyAddedRating = await _context.Ratings.FirstOrDefaultAsync(x => x.UserId == AddUserId && x.MovieId == AddMovieId);
+            var AddUserId = userId;
+            var userAlreadyAddedRating = await _context.Ratings.FirstOrDefaultAsync(x => x.UserId == AddUserId && x.MovieId == AddVideoId);
 
             if (userAlreadyAddedRating != null)
             {
@@ -39,7 +32,7 @@ namespace JAP_Task_1_MoviesApi.Services
             var addRating = new RatingEntity
             {
                 Value = AddValue,
-                MovieId = AddMovieId,
+                MovieId = AddVideoId,
                 UserId = AddUserId
             };
 

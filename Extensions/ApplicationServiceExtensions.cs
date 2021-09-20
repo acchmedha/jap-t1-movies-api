@@ -13,12 +13,12 @@ namespace JAP_Task_1_MoviesApi.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddScoped<IMovieService, MovieRepository>();
+            services.AddScoped<IVideoService, VideoService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IRatingService, RatingService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<MoviesAppDbContext>(options =>
             {
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });

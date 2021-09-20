@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace JAP_Task_1_MoviesApi.Services
 {
-    public class MovieRepository : IMovieService
+    public class VideoService : IVideoService
     {
 
-        private readonly ApplicationDbContext _context;
+        private readonly MoviesAppDbContext _context;
         private readonly IMapper _mapper;
 
-        public MovieRepository(ApplicationDbContext context, IMapper mapper)
+        public VideoService(MoviesAppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -38,7 +38,7 @@ namespace JAP_Task_1_MoviesApi.Services
                             PosterPath = x.PosterPath,
                             ReleaseDate = x.ReleaseDate,
                             AverageRating = x.Ratings.Select(x => x.Value).DefaultIfEmpty().Average(),
-                            Actors = x.Actors.Select(x => new ActorMovieDto { Name = x.Name, Surname = x.Surname }).ToList(),
+                            Actors = x.Actors.Select(x => new ActorMovieDto { Name = x.FirstName, Surname = x.LastName }).ToList(),
                         })
                         .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -47,7 +47,7 @@ namespace JAP_Task_1_MoviesApi.Services
 
         public async Task<List<MovieDto>> GetMoviesOrTvShows(int type, PaginationDto pagination)
         {
-            var query = await _context.Movies
+            var videos = await _context.Movies
                                    .Include(x => x.Ratings)
                                    .Where(x => x.Type == type)
                                    .Select(x => new MovieDto
@@ -66,7 +66,7 @@ namespace JAP_Task_1_MoviesApi.Services
                                    .Take(pagination.PageSize)
                                    .ToListAsync();
 
-            return query;
+            return videos;
         }
 
         public async Task<List<MovieDto>> GetFilteredMovies(string search)
@@ -82,11 +82,11 @@ namespace JAP_Task_1_MoviesApi.Services
 
             return data;
         }
-        private static void AddFiltersForMovieSearch(string Search, ref IQueryable<MovieEntity> query)
+        private static void AddFiltersForMovieSearch(string Search, ref IQueryable<VideoEntity> query)
         {
 
             var searchQuery = Regex.Split(Search, @"\s+").ToList();
-            void setDefaultSearchQuery(ref IQueryable<MovieEntity> q) => q = q.Where(x => x.Title.ToUpper().Contains(Search.ToUpper())
+            void setDefaultSearchQuery(ref IQueryable<VideoEntity> q) => q = q.Where(x => x.Title.ToUpper().Contains(Search.ToUpper())
                                                                    || x.Overview.ToUpper().Contains(Search.ToUpper()));
 
             bool containingStringStar(string s) => s.ToUpper().Equals("STAR") || s.ToUpper().Equals("STARS");
@@ -130,11 +130,6 @@ namespace JAP_Task_1_MoviesApi.Services
         public bool MovieExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
-        }
-        public async Task UpdateMovieAsync(MovieEntity movie)
-        {
-            _context.Entry(movie).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
         }
     }
 }

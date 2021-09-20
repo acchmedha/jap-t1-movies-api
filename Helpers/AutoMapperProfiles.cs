@@ -14,7 +14,7 @@ namespace JAP_Task_1_MoviesApi.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<RegisterDto, UserEntity>();
-            CreateMap<MovieEntity, MovieDto>();
+            CreateMap<VideoEntity, MovieDto>();
         }
     }
 }
