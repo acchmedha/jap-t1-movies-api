@@ -8,6 +8,6 @@ namespace JAP_Task_1_MoviesApi.Services.AuthService
 {
     public interface IAuthService
     {
-        string CreateToken(User user);
+        string CreateToken(UserEntity user);
     }
 }

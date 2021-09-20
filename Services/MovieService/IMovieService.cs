@@ -12,7 +12,7 @@ namespace JAP_Task_1_MoviesApi.Services.MovieService
     {
         Task<List<MovieDto>> GetMoviesOrTvShows(int type, PaginationDto pagination);
         Task<MovieFullInfoDto> GetMovieById(int id);
-        Task UpdateMovieAsync(Movie movie);
+        Task UpdateMovieAsync(MovieEntity movie);
         Task<List<MovieDto>> GetFilteredMovies(string search);
         bool MovieExists(int id);
     }

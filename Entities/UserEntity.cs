@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace JAP_Task_1_MoviesApi.Models
 {
-    public class User
+    public class UserEntity
     {
         public int Id { get; set; }
         public string Username { get; set; }
@@ -14,7 +14,7 @@ namespace JAP_Task_1_MoviesApi.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public List<Rating> Ratings { get; set; }
+        public List<RatingEntity> Ratings { get; set; }
 
     }
 }

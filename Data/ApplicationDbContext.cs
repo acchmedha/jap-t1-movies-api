@@ -10,10 +10,10 @@ namespace JAP_Task_1_MoviesApi.Data
         {
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Actor> Actors { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<MovieEntity> Movies { get; set; }
+        public DbSet<ActorEntity> Actors { get; set; }
+        public DbSet<RatingEntity> Ratings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -29,7 +29,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
         {
             if (await UserExits(registerDto.Username)) return BadRequest("Username is already taken");
 
-            var user = _mapper.Map<User>(registerDto);
+            var user = _mapper.Map<UserEntity>(registerDto);
             
             using var hmc = new HMACSHA512();
 

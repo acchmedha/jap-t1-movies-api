@@ -37,7 +37,7 @@ namespace JAP_Task_1_MoviesApi.Services.RatingService
                 return response;
             }
 
-            var addRating = new Rating
+            var addRating = new RatingEntity
             {
                 Value = AddValue,
                 MovieId = AddMovieId,

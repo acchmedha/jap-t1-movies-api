@@ -84,11 +84,11 @@ namespace JAP_Task_1_MoviesApi.Services.MovieService
 
             return data;
         }
-        private static void AddFiltersForMovieSearch(string Search, ref IQueryable<Movie> query)
+        private static void AddFiltersForMovieSearch(string Search, ref IQueryable<MovieEntity> query)
         {
 
             var searchQuery = Regex.Split(Search, @"\s+").ToList();
-            void setDefaultSearchQuery(ref IQueryable<Movie> q) => q = q.Where(x => x.Title.ToUpper().Contains(Search.ToUpper())
+            void setDefaultSearchQuery(ref IQueryable<MovieEntity> q) => q = q.Where(x => x.Title.ToUpper().Contains(Search.ToUpper())
                                                                    || x.Overview.ToUpper().Contains(Search.ToUpper()));
 
             bool containingStringStar(string s) => s.ToUpper().Equals("STAR") || s.ToUpper().Equals("STARS");
@@ -133,7 +133,7 @@ namespace JAP_Task_1_MoviesApi.Services.MovieService
         {
             return _context.Users.Any(e => e.Id == id);
         }
-        public async Task UpdateMovieAsync(Movie movie)
+        public async Task UpdateMovieAsync(MovieEntity movie)
         {
             _context.Entry(movie).State = EntityState.Modified;
             await _context.SaveChangesAsync();

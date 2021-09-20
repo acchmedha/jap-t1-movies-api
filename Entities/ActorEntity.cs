@@ -3,11 +3,11 @@
 
 namespace JAP_Task_1_MoviesApi.Models
 {
-    public class Actor
+    public class ActorEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public List<Movie> Movies { get; set; }
+        public List<MovieEntity> Movies { get; set; }
     }
 }

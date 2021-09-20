@@ -67,7 +67,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
         // PUT: api/MoviesTvShows/5
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutMovie(int id, Movie movie)
+        public async Task<IActionResult> PutMovie(int id, MovieEntity movie)
         {
             if (id != movie.Id)
             {

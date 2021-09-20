@@ -25,7 +25,7 @@ namespace JAP_Task_1_MoviesApi.Services.AuthService
             passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
         }
 
-        public string CreateToken(User user)
+        public string CreateToken(UserEntity user)
         {
             var claims = new List<Claim>
             {
