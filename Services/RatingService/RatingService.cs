@@ -1,7 +1,6 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Entities;
-using JAP_Task_1_MoviesApi.Models;
-using Microsoft.AspNetCore.Http;
+using JAP_Task_1_MoviesApi.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
@@ -15,36 +14,26 @@ namespace JAP_Task_1_MoviesApi.Services
         {
             _context = context;
         }
-        public async Task<ServiceResponse<bool>> AddRating(double AddValue, int AddVideoId, int userId)
+        public async Task<ServiceResponse<bool>> AddRating(double addValue, int addVideoId, int userId)
         {
-            ServiceResponse<bool> response = new();
+            ServiceResponse<bool> response = new() { Data = false };
 
-            var AddUserId = userId;
-            var userAlreadyAddedRating = await _context.Ratings.FirstOrDefaultAsync(x => x.UserId == AddUserId && x.VideoId == AddVideoId);
+            if (addValue < 1 || addValue > 5)
+                throw new Exception("Rating must be between 1 and 5!");
 
-            if (userAlreadyAddedRating != null)
-            {
-                response.Data = false;
-                response.Success = false;
-                response.Message = "You already rated this item";
-                return response;
-            }
+            if ((await _context.Ratings.FirstOrDefaultAsync(x => x.UserId == userId && x.VideoId == addVideoId)) != null)
+                throw new Exception("You already rated this item");
+            
+            if (await _context.Videos.FirstOrDefaultAsync(x => x.Id == addVideoId) == null)
+                throw new Exception("The given video does not exist!");
 
-            var addRating = new RatingEntity
-            {
-                Value = AddValue,
-                VideoId = AddVideoId,
-                UserId = AddUserId
-            };
+            if (await _context.Users.FirstOrDefaultAsync(x => x.Id == userId) == null)
+                throw new Exception("The given user does not exist!");
 
-            await _context.Ratings.AddAsync(addRating);
+            await _context.Ratings.AddAsync( new() { Value = addValue, VideoId = addVideoId, UserId = userId});
             await _context.SaveChangesAsync();
 
-            response.Data = true;
-            response.Success = true;
-            response.Message = "Successfully added rating";
-
-            return response;
+            return new() { Data = true, Success = true, Message = "Successfully added rating" };
         }
     }
 }

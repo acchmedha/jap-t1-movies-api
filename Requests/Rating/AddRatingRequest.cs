@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JAP_Task_1_MoviesApi.DTO
+namespace JAP_Task_1_MoviesApi.Requests.Rating
 {
-    public class RatingDto
+    public class AddRatingRequest
     {
         public double Value { get; set; }
         public int MovieId { get; set; }

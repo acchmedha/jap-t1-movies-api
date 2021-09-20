@@ -1,4 +1,4 @@
-﻿using JAP_Task_1_MoviesApi.DTO;
+﻿using JAP_Task_1_MoviesApi.Requests.Rating;
 using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,10 +21,9 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
         [HttpPost("add")]
         [Authorize]
-        public async Task<IActionResult> AddRating(RatingDto rating)
+        public async Task<IActionResult> AddRating(AddRatingRequest ratingReq)
         {
-
-            var response = await _ratingService.AddRating(rating.Value, rating.MovieId, GetUserId());
+            var response = await _ratingService.AddRating(ratingReq.Value, ratingReq.MovieId, GetUserId());
 
             if (!response.Success)
                 return BadRequest(response);
