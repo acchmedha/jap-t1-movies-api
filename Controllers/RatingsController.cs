@@ -1,5 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.DTO;
-using JAP_Task_1_MoviesApi.Services.RatingService;
+using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

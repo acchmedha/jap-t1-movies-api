@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace JAP_Task_1_MoviesApi.Services.AuthService
+namespace JAP_Task_1_MoviesApi.Services
 {
     public class AuthService : IAuthService
     {

@@ -1,5 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.Models;
-using JAP_Task_1_MoviesApi.Services.AuthService;
+using JAP_Task_1_MoviesApi.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 

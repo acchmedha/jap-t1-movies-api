@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.DTO;
-using JAP_Task_1_MoviesApi.Helpers;
 using JAP_Task_1_MoviesApi.Models;
-using JAP_Task_1_MoviesApi.Services.MovieService;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +9,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace JAP_Task_1_MoviesApi.Services.MovieService
+namespace JAP_Task_1_MoviesApi.Services
 {
     public class MovieRepository : IMovieService
     {

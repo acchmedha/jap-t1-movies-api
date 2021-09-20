@@ -2,7 +2,7 @@
 using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.DTO;
 using JAP_Task_1_MoviesApi.Models;
-using JAP_Task_1_MoviesApi.Services.AuthService;
+using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;

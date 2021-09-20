@@ -1,8 +1,6 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Helpers;
-using JAP_Task_1_MoviesApi.Services.AuthService;
-using JAP_Task_1_MoviesApi.Services.MovieService;
-using JAP_Task_1_MoviesApi.Services.RatingService;
+using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

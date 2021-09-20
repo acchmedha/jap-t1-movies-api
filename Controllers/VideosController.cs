@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JAP_Task_1_MoviesApi.Models;
 using Microsoft.AspNetCore.Authorization;
-using JAP_Task_1_MoviesApi.Services.MovieService;
+using JAP_Task_1_MoviesApi.Services;
 using JAP_Task_1_MoviesApi.DTO;
 
 namespace JAP_Task_1_MoviesApi.Controllers

@@ -8,12 +8,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace JAP_Task_1_MoviesApi.Services.RatingService
+namespace JAP_Task_1_MoviesApi.Services
 {
     public class RatingService : IRatingService
     {
         private readonly ApplicationDbContext _context;
-        private IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public RatingService(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
