@@ -6,18 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JAP_Task_1_MoviesApi.Models;
 using Microsoft.AspNetCore.Authorization;
-using JAP_Task_1_MoviesApi.Helpers;
-using JAP_Task_1_MoviesApi.Extensions;
 using JAP_Task_1_MoviesApi.Services.MovieService;
 using JAP_Task_1_MoviesApi.DTO;
 
 namespace JAP_Task_1_MoviesApi.Controllers
 {
-    public class MoviesTvShowsController : BaseApiController
+    public class VideosController : BaseApiController
     {
         private readonly IMovieService _movieService;
 
-        public MoviesTvShowsController(IMovieService movieService)
+        public VideosController(IMovieService movieService)
         {
             _movieService = movieService;
         }
