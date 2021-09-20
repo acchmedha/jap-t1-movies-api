@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using JAP_Task_1_MoviesApi.Data;
-using JAP_Task_1_MoviesApi.DTO;
 using JAP_Task_1_MoviesApi.Models;
+using JAP_Task_1_MoviesApi.Requests;
 using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -17,19 +16,19 @@ namespace JAP_Task_1_MoviesApi.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterDto registerData)
+        public async Task<IActionResult> Register(UserRegisterRequest request)
         {
             var response = await _authService.Register(new UserEntity
-            { Username = registerData.Username, FirstName = registerData.FirstName, LastName = registerData.LastName },
-                registerData.Password);
+            { Username = request.Username, FirstName = request.FirstName, LastName = request.LastName },
+                request.Password);
 
             return (response.Success) ? Ok(response) : BadRequest(response);
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDataDto loginData)
+        public async Task<IActionResult> Login(UserLoginRequest request)
         {
-            var response = await _authService.Login(loginData.Username, loginData.Password);
+            var response = await _authService.Login(request.Username, request.Password);
 
             return (response.Success) ? Ok(response) : BadRequest(response);
         }

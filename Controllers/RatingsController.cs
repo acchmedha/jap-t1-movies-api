@@ -1,4 +1,4 @@
-﻿using JAP_Task_1_MoviesApi.Requests.Rating;
+﻿using JAP_Task_1_MoviesApi.Requests;
 using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

@@ -27,78 +27,50 @@ namespace JAP_Task_1_MoviesApi.Services
         public async Task<ServiceResponse<LoginDto>> Login(string username, string password)
         {
             ServiceResponse<LoginDto> response = new();
-            UserEntity user = null;
-
-            try
-            {
-                user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
-            }
-            catch (Exception)
-            {
-                response.Success = false;
-                response.Message = "Internal server error";
-                return response;
-            }
+            UserEntity user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
 
             if (user == null)
             {
-                response.Success = false;
-                response.Message = "User not found.";
+                throw new Exception("User not found!");
             }
             else if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
-                response.Success = false;
-                response.Message = "Wrong password";
+                throw new Exception("Wrong password!");
             }
             else
             {
-                LoginDto userLogin = new();
-                userLogin.Token = CreateToken(user);
-                userLogin.Username = user.Username;
-                userLogin.FirstName = user.FirstName;
-                userLogin.LastName = user.LastName;
+                LoginDto userLogin = new()
+                {
+                    Token = CreateToken(user),
+                    Username = user.Username,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName
+                };
 
+                response.Success = true;
                 response.Data = userLogin;
                 response.Message = "Login successful!";
             }
-
             return response;
-
         }
 
         public async Task<ServiceResponse<int>> Register(UserEntity user, string password)
         {
-            var response = new ServiceResponse<int>();
+            if (await UserExists(user.Username))
+                throw new Exception("User already exists");
 
-            try
-            {
-                if (await UserExists(user.Username))
-                {
-                    response.Success = false;
-                    response.Message = "User already exists.";
-                    return response;
-                }
+            CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
 
-                CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
 
-                user.PasswordHash = passwordHash;
-                user.PasswordSalt = passwordSalt;
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
 
-                await _context.Users.AddAsync(user);
-                await _context.SaveChangesAsync();
-
-                response.Data = user.Id;
-                response.Message = "Registered successfully!";
-            }
-            catch (Exception)
-            {
-                response.Success = false;
-                response.Message = "Internal server error";
-            }
-
-            return response;
+            return new ServiceResponse<int>() { Data = user.Id, Message = "User registered successfully", Success = true };
         }
-        private async Task<bool> UserExists(string username) => await _context.Users.AnyAsync(x => x.Username == username.ToLower());
+
+        private async Task<bool> UserExists(string username) => await _context.Users.AnyAsync(x => x.Username.ToLower() == username.ToLower());
 
         public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
@@ -106,6 +78,7 @@ namespace JAP_Task_1_MoviesApi.Services
             passwordSalt = hmac.Key;
             passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
         }
+
         public static bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             using var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt);

@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using JAP_Task_1_MoviesApi.DTO;
 using JAP_Task_1_MoviesApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+using JAP_Task_1_MoviesApi.Requests;
 namespace JAP_Task_1_MoviesApi.Helpers
 {
     public class AutoMapperProfiles : Profile
@@ -13,7 +9,7 @@ namespace JAP_Task_1_MoviesApi.Helpers
 
         public AutoMapperProfiles()
         {
-            CreateMap<RegisterDto, UserEntity>();
+            //CreateMap<UserRegisterRequest, UserEntity>();
             CreateMap<VideoEntity, MovieDto>();
         }
     }
