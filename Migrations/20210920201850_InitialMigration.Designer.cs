@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JAP_Task_1_MoviesApi.Migrations
 {
-    [DbContext(typeof(Data.MoviesAppDbContext))]
-    [Migration("20210915194018_InitialMigration")]
+    [DbContext(typeof(MoviesAppDbContext))]
+    [Migration("20210920201850_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,32 +21,32 @@ namespace JAP_Task_1_MoviesApi.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ActorMovie", b =>
+            modelBuilder.Entity("ActorEntityVideoEntity", b =>
                 {
                     b.Property<int>("ActorsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MoviesId")
+                    b.Property<int>("VideosId")
                         .HasColumnType("int");
 
-                    b.HasKey("ActorsId", "MoviesId");
+                    b.HasKey("ActorsId", "VideosId");
 
-                    b.HasIndex("MoviesId");
+                    b.HasIndex("VideosId");
 
-                    b.ToTable("ActorMovie");
+                    b.ToTable("ActorEntityVideoEntity");
                 });
 
-            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.Actor", b =>
+            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.ActorEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Surname")
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -57,426 +57,613 @@ namespace JAP_Task_1_MoviesApi.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Morgan",
-                            Surname = "Freeman"
+                            FirstName = "Morgan",
+                            LastName = "Freeman"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Bob",
-                            Surname = "Gunton"
+                            FirstName = "Bob",
+                            LastName = "Gunton"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Tim",
-                            Surname = "Robbins"
+                            FirstName = "Tim",
+                            LastName = "Robbins"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Marlon",
-                            Surname = "Brando"
+                            FirstName = "Marlon",
+                            LastName = "Brando"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Al",
-                            Surname = "Pacino"
+                            FirstName = "Al",
+                            LastName = "Pacino"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "James",
-                            Surname = "Caan"
+                            FirstName = "James",
+                            LastName = "Caan"
                         },
                         new
                         {
                             Id = 7,
-                            Name = "Robert",
-                            Surname = "De Niro"
+                            FirstName = "Robert",
+                            LastName = "De Niro"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Robert",
-                            Surname = "Duvall"
+                            FirstName = "Robert",
+                            LastName = "Duvall"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "Christian",
-                            Surname = "Bale"
+                            FirstName = "Christian",
+                            LastName = "Bale"
                         },
                         new
                         {
                             Id = 10,
-                            Name = "Heath",
-                            Surname = "Ledger"
+                            FirstName = "Heath",
+                            LastName = "Ledger"
                         },
                         new
                         {
                             Id = 11,
-                            Name = "Aaron",
-                            Surname = "Eckhart"
+                            FirstName = "Aaron",
+                            LastName = "Eckhart"
                         },
                         new
                         {
                             Id = 12,
-                            Name = "Henry",
-                            Surname = "Fonda"
+                            FirstName = "Henry",
+                            LastName = "Fonda"
                         },
                         new
                         {
                             Id = 13,
-                            Name = "Lee",
-                            Surname = "J. Cobb"
+                            FirstName = "Lee",
+                            LastName = "J. Cobb"
                         },
                         new
                         {
                             Id = 14,
-                            Name = "Martin",
-                            Surname = "Balsam"
+                            FirstName = "Martin",
+                            LastName = "Balsam"
                         },
                         new
                         {
                             Id = 15,
-                            Name = "Liam",
-                            Surname = "Neeson"
+                            FirstName = "Liam",
+                            LastName = "Neeson"
                         },
                         new
                         {
                             Id = 16,
-                            Name = "Ralph",
-                            Surname = "Fiennes"
+                            FirstName = "Ralph",
+                            LastName = "Fiennes"
                         },
                         new
                         {
                             Id = 17,
-                            Name = "Ben",
-                            Surname = "Kingsley"
+                            FirstName = "Ben",
+                            LastName = "Kingsley"
                         },
                         new
                         {
                             Id = 18,
-                            Name = "Elijah",
-                            Surname = "Wood"
+                            FirstName = "Elijah",
+                            LastName = "Wood"
                         },
                         new
                         {
                             Id = 19,
-                            Name = "Viggo",
-                            Surname = "Mortensen"
+                            FirstName = "Viggo",
+                            LastName = "Mortensen"
                         },
                         new
                         {
                             Id = 20,
-                            Name = "Ian",
-                            Surname = "McKellen"
+                            FirstName = "Ian",
+                            LastName = "McKellen"
                         },
                         new
                         {
                             Id = 21,
-                            Name = "John",
-                            Surname = "Travolta"
+                            FirstName = "John",
+                            LastName = "Travolta"
                         },
                         new
                         {
                             Id = 22,
-                            Name = "Uma",
-                            Surname = "Thurman"
+                            FirstName = "Uma",
+                            LastName = "Thurman"
                         },
                         new
                         {
                             Id = 23,
-                            Name = "Samuel",
-                            Surname = "L. Jackson"
+                            FirstName = "Samuel",
+                            LastName = "L. Jackson"
                         },
                         new
                         {
                             Id = 24,
-                            Name = "Clint",
-                            Surname = "Eastwood"
+                            FirstName = "Clint",
+                            LastName = "Eastwood"
                         },
                         new
                         {
                             Id = 25,
-                            Name = "Eli",
-                            Surname = "Wallach"
+                            FirstName = "Eli",
+                            LastName = "Wallach"
                         },
                         new
                         {
                             Id = 26,
-                            Name = "Lee",
-                            Surname = "Van Cleef"
+                            FirstName = "Lee",
+                            LastName = "Van Cleef"
                         },
                         new
                         {
                             Id = 27,
-                            Name = "Orlando",
-                            Surname = "Bloom"
+                            FirstName = "Orlando",
+                            LastName = "Bloom"
                         },
                         new
                         {
                             Id = 28,
-                            Name = "Brad",
-                            Surname = "Pitt"
+                            FirstName = "Brad",
+                            LastName = "Pitt"
                         },
                         new
                         {
                             Id = 29,
-                            Name = "Edward",
-                            Surname = "Norton"
+                            FirstName = "Edward",
+                            LastName = "Norton"
                         },
                         new
                         {
                             Id = 30,
-                            Name = "Meat",
-                            Surname = "Loaf"
+                            FirstName = "Meat",
+                            LastName = "Loaf"
                         },
                         new
                         {
                             Id = 31,
-                            Name = "Tom",
-                            Surname = "Hanks"
+                            FirstName = "Tom",
+                            LastName = "Hanks"
                         },
                         new
                         {
                             Id = 32,
-                            Name = "Robin",
-                            Surname = "Wright"
+                            FirstName = "Robin",
+                            LastName = "Wright"
                         },
                         new
                         {
                             Id = 33,
-                            Name = "Gary",
-                            Surname = "Sinise"
+                            FirstName = "Gary",
+                            LastName = "Sinise"
                         },
                         new
                         {
                             Id = 34,
-                            Name = "Leonardo",
-                            Surname = "DiCaprio"
+                            FirstName = "Leonardo",
+                            LastName = "DiCaprio"
                         },
                         new
                         {
                             Id = 35,
-                            Name = "Joseph",
-                            Surname = "Gordon-Levitt"
+                            FirstName = "Joseph",
+                            LastName = "Gordon-Levitt"
                         },
                         new
                         {
                             Id = 36,
-                            Name = "Elliot",
-                            Surname = "Page"
+                            FirstName = "Elliot",
+                            LastName = "Page"
                         },
                         new
                         {
                             Id = 37,
-                            Name = "David",
-                            Surname = "Attenborough"
+                            FirstName = "David",
+                            LastName = "Attenborough"
                         },
                         new
                         {
                             Id = 38,
-                            Name = "Sigourney",
-                            Surname = "Weaver"
+                            FirstName = "Sigourney",
+                            LastName = "Weaver"
                         },
                         new
                         {
                             Id = 39,
-                            Name = "Nikolay",
-                            Surname = "Drozdov"
+                            FirstName = "Nikolay",
+                            LastName = "Drozdov"
                         },
                         new
                         {
                             Id = 40,
-                            Name = "Bryan",
-                            Surname = "Cranston"
+                            FirstName = "Bryan",
+                            LastName = "Cranston"
                         },
                         new
                         {
                             Id = 41,
-                            Name = "Aaron",
-                            Surname = "Paul"
+                            FirstName = "Aaron",
+                            LastName = "Paul"
                         },
                         new
                         {
                             Id = 42,
-                            Name = "Anna",
-                            Surname = "Gunn"
+                            FirstName = "Anna",
+                            LastName = "Gunn"
                         },
                         new
                         {
                             Id = 43,
-                            Name = "Scott",
-                            Surname = "Grimes"
+                            FirstName = "Scott",
+                            LastName = "Grimes"
                         },
                         new
                         {
                             Id = 44,
-                            Name = "Damian",
-                            Surname = "Lewis"
+                            FirstName = "Damian",
+                            LastName = "Lewis"
                         },
                         new
                         {
                             Id = 45,
-                            Name = "Ron",
-                            Surname = "Livingston"
+                            FirstName = "Ron",
+                            LastName = "Livingston"
                         },
                         new
                         {
                             Id = 46,
-                            Name = "Jessie",
-                            Surname = "Buckley"
+                            FirstName = "Jessie",
+                            LastName = "Buckley"
                         },
                         new
                         {
                             Id = 47,
-                            Name = "Jared",
-                            Surname = "Harris"
+                            FirstName = "Jared",
+                            LastName = "Harris"
                         },
                         new
                         {
                             Id = 48,
-                            Name = "Stellan",
-                            Surname = "Skarsgard"
+                            FirstName = "Stellan",
+                            LastName = "Skarsgard"
                         },
                         new
                         {
                             Id = 49,
-                            Name = "Jessie",
-                            Surname = "Buckley"
+                            FirstName = "Jessie",
+                            LastName = "Buckley"
                         },
                         new
                         {
                             Id = 50,
-                            Name = "Dominic",
-                            Surname = "West"
+                            FirstName = "Dominic",
+                            LastName = "West"
                         },
                         new
                         {
                             Id = 51,
-                            Name = "Lance",
-                            Surname = "Reddick"
+                            FirstName = "Lance",
+                            LastName = "Reddick"
                         },
                         new
                         {
                             Id = 52,
-                            Name = "Sonja",
-                            Surname = "Sohn"
+                            FirstName = "Sonja",
+                            LastName = "Sohn"
                         },
                         new
                         {
                             Id = 53,
-                            Name = "Peter",
-                            Surname = "Drost"
+                            FirstName = "Peter",
+                            LastName = "Drost"
                         },
                         new
                         {
                             Id = 54,
-                            Name = "Roger",
-                            Surname = "Horrocks"
+                            FirstName = "Roger",
+                            LastName = "Horrocks"
                         },
                         new
                         {
                             Id = 55,
-                            Name = "Neil",
-                            Surname = "deGrasse Tyson"
+                            FirstName = "Neil",
+                            LastName = "deGrasse Tyson"
                         },
                         new
                         {
                             Id = 56,
-                            Name = "Stoney",
-                            Surname = "Emshwiller"
+                            FirstName = "Stoney",
+                            LastName = "Emshwiller"
                         },
                         new
                         {
                             Id = 57,
-                            Name = "Piotr",
-                            Surname = "Michael"
+                            FirstName = "Piotr",
+                            LastName = "Michael"
                         },
                         new
                         {
                             Id = 58,
-                            Name = "Neil",
-                            Surname = "deGrasse Tyson"
+                            FirstName = "Neil",
+                            LastName = "deGrasse Tyson"
                         },
                         new
                         {
                             Id = 59,
-                            Name = "Dee",
-                            Surname = "Bradley Baker"
+                            FirstName = "Dee",
+                            LastName = "Bradley Baker"
                         },
                         new
                         {
                             Id = 60,
-                            Name = "Zach",
-                            Surname = "Tyler"
+                            FirstName = "Zach",
+                            LastName = "Tyler"
                         },
                         new
                         {
                             Id = 61,
-                            Name = "Mae",
-                            Surname = "Whitman"
+                            FirstName = "Mae",
+                            LastName = "Whitman"
                         },
                         new
                         {
                             Id = 62,
-                            Name = "Carl",
-                            Surname = "Sagan"
+                            FirstName = "Carl",
+                            LastName = "Sagan"
                         },
                         new
                         {
                             Id = 63,
-                            Name = "Jaromir",
-                            Surname = "Hanzlik"
+                            FirstName = "Jaromir",
+                            LastName = "Hanzlik"
                         },
                         new
                         {
                             Id = 64,
-                            Name = "Jonathan",
-                            Surname = "Fahn"
+                            FirstName = "Jonathan",
+                            LastName = "Fahn"
                         },
                         new
                         {
                             Id = 65,
-                            Name = "Emilia",
-                            Surname = "Clarke"
+                            FirstName = "Emilia",
+                            LastName = "Clarke"
                         },
                         new
                         {
                             Id = 66,
-                            Name = "Peter",
-                            Surname = "Dinklage"
+                            FirstName = "Peter",
+                            LastName = "Dinklage"
                         },
                         new
                         {
                             Id = 67,
-                            Name = "Kit",
-                            Surname = "Harington"
+                            FirstName = "Kit",
+                            LastName = "Harington"
                         },
                         new
                         {
                             Id = 68,
-                            Name = "James",
-                            Surname = "Gandolfini"
+                            FirstName = "James",
+                            LastName = "Gandolfini"
                         },
                         new
                         {
                             Id = 69,
-                            Name = "Lorraine",
-                            Surname = "Bracco"
+                            FirstName = "Lorraine",
+                            LastName = "Bracco"
                         },
                         new
                         {
                             Id = 70,
-                            Name = "Eddie",
-                            Surname = "Falco"
+                            FirstName = "Eddie",
+                            LastName = "Falco"
                         });
                 });
 
-            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.Movie", b =>
+            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.RatingEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("UserEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("VideoEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VideoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserEntityId");
+
+                    b.HasIndex("VideoEntityId");
+
+                    b.ToTable("Ratings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            UserId = 1,
+                            Value = 4.5999999999999996,
+                            VideoId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            UserId = 1,
+                            Value = 4.5,
+                            VideoId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            UserId = 1,
+                            Value = 4.5,
+                            VideoId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            UserId = 1,
+                            Value = 4.5,
+                            VideoId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            UserId = 1,
+                            Value = 4.4000000000000004,
+                            VideoId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            UserId = 1,
+                            Value = 4.3499999999999996,
+                            VideoId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            UserId = 1,
+                            Value = 4.2999999999999998,
+                            VideoId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 60
+                        },
+                        new
+                        {
+                            Id = 12,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 61
+                        },
+                        new
+                        {
+                            Id = 13,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 62
+                        },
+                        new
+                        {
+                            Id = 14,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 63
+                        },
+                        new
+                        {
+                            Id = 15,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 64
+                        },
+                        new
+                        {
+                            Id = 16,
+                            UserId = 1,
+                            Value = 4.2000000000000002,
+                            VideoId = 65
+                        });
+                });
+
+            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.UserEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2021, 9, 20, 22, 18, 49, 916, DateTimeKind.Local).AddTicks(6119),
+                            FirstName = "Admin",
+                            LastName = "Admin",
+                            PasswordHash = new byte[] { 82, 103, 230, 133, 202, 246, 186, 177, 226, 221, 213, 218, 146, 195, 250, 173, 121, 181, 77, 238, 220, 105, 32, 7, 93, 230, 130, 195, 80, 168, 214, 251, 239, 124, 29, 197, 214, 203, 54, 226, 22, 120, 16, 166, 74, 77, 161, 110, 45, 38, 14, 106, 132, 219, 87, 45, 12, 153, 28, 153, 156, 6, 226, 224 },
+                            PasswordSalt = new byte[] { 119, 208, 54, 218, 238, 205, 20, 123, 216, 159, 124, 255, 71, 34, 243, 146, 67, 72, 189, 108, 124, 36, 13, 140, 200, 156, 108, 51, 124, 157, 214, 36, 112, 181, 254, 33, 88, 151, 212, 243, 159, 110, 114, 92, 83, 32, 48, 238, 24, 6, 6, 79, 13, 170, 189, 6, 82, 76, 98, 132, 81, 226, 87, 163, 215, 31, 208, 119, 186, 176, 226, 106, 23, 72, 125, 110, 188, 249, 7, 56, 141, 78, 202, 28, 232, 14, 110, 129, 179, 33, 25, 248, 233, 146, 54, 9, 68, 185, 253, 161, 209, 124, 214, 224, 232, 160, 157, 93, 245, 8, 59, 191, 111, 77, 83, 7, 44, 118, 140, 26, 100, 124, 76, 158, 172, 110, 194, 192 },
+                            Username = "admin"
+                        });
+                });
+
+            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.VideoEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -500,7 +687,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Videos");
 
                     b.HasData(
                         new
@@ -1153,223 +1340,38 @@ namespace JAP_Task_1_MoviesApi.Migrations
                         });
                 });
 
-            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.Rating", b =>
+            modelBuilder.Entity("ActorEntityVideoEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Ratings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            MovieId = 1,
-                            UserId = 1,
-                            Value = 4.5999999999999996
-                        },
-                        new
-                        {
-                            Id = 2,
-                            MovieId = 2,
-                            UserId = 1,
-                            Value = 4.5
-                        },
-                        new
-                        {
-                            Id = 3,
-                            MovieId = 3,
-                            UserId = 1,
-                            Value = 4.5
-                        },
-                        new
-                        {
-                            Id = 4,
-                            MovieId = 4,
-                            UserId = 1,
-                            Value = 4.5
-                        },
-                        new
-                        {
-                            Id = 5,
-                            MovieId = 5,
-                            UserId = 1,
-                            Value = 4.4000000000000004
-                        },
-                        new
-                        {
-                            Id = 6,
-                            MovieId = 6,
-                            UserId = 1,
-                            Value = 4.3499999999999996
-                        },
-                        new
-                        {
-                            Id = 7,
-                            MovieId = 7,
-                            UserId = 1,
-                            Value = 4.2999999999999998
-                        },
-                        new
-                        {
-                            Id = 8,
-                            MovieId = 8,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 9,
-                            MovieId = 9,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 10,
-                            MovieId = 10,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 11,
-                            MovieId = 60,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 12,
-                            MovieId = 61,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 13,
-                            MovieId = 62,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 14,
-                            MovieId = 63,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 15,
-                            MovieId = 64,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        },
-                        new
-                        {
-                            Id = 16,
-                            MovieId = 65,
-                            UserId = 1,
-                            Value = 4.2000000000000002
-                        });
-                });
-
-            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("PasswordHash")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2021, 9, 15, 21, 40, 17, 840, DateTimeKind.Local).AddTicks(6044),
-                            FirstName = "Admin",
-                            LastName = "Admin",
-                            PasswordHash = new byte[] { 204, 105, 9, 92, 53, 220, 143, 225, 194, 216, 51, 117, 166, 143, 17, 222, 216, 187, 78, 220, 242, 123, 0, 30, 25, 63, 35, 157, 235, 178, 94, 158, 32, 137, 56, 240, 56, 196, 124, 174, 79, 94, 72, 162, 51, 157, 9, 226, 106, 44, 173, 44, 131, 110, 193, 117, 187, 137, 120, 122, 14, 175, 37, 121 },
-                            PasswordSalt = new byte[] { 100, 149, 125, 130, 50, 189, 254, 221, 245, 132, 160, 208, 124, 65, 42, 20, 99, 205, 185, 172, 159, 44, 72, 233, 249, 77, 91, 114, 195, 171, 14, 9, 138, 218, 111, 96, 199, 45, 248, 197, 28, 142, 239, 156, 180, 108, 54, 42, 157, 177, 139, 31, 220, 206, 251, 250, 40, 164, 24, 28, 21, 187, 134, 139, 242, 112, 157, 7, 2, 133, 204, 96, 155, 158, 40, 195, 46, 164, 180, 163, 238, 89, 91, 56, 229, 178, 231, 190, 193, 44, 147, 105, 17, 76, 134, 234, 147, 161, 134, 98, 95, 155, 235, 61, 89, 113, 5, 37, 35, 53, 0, 205, 138, 79, 161, 232, 143, 215, 198, 73, 56, 168, 141, 186, 170, 2, 16, 39 },
-                            Username = "admin"
-                        });
-                });
-
-            modelBuilder.Entity("ActorMovie", b =>
-                {
-                    b.HasOne("JAP_Task_1_MoviesApi.Models.Actor", null)
+                    b.HasOne("JAP_Task_1_MoviesApi.Models.ActorEntity", null)
                         .WithMany()
                         .HasForeignKey("ActorsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JAP_Task_1_MoviesApi.Models.Movie", null)
+                    b.HasOne("JAP_Task_1_MoviesApi.Models.VideoEntity", null)
                         .WithMany()
-                        .HasForeignKey("MoviesId")
+                        .HasForeignKey("VideosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.Rating", b =>
+            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.RatingEntity", b =>
                 {
-                    b.HasOne("JAP_Task_1_MoviesApi.Models.Movie", null)
+                    b.HasOne("JAP_Task_1_MoviesApi.Models.UserEntity", null)
                         .WithMany("Ratings")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserEntityId");
 
-                    b.HasOne("JAP_Task_1_MoviesApi.Models.User", null)
+                    b.HasOne("JAP_Task_1_MoviesApi.Models.VideoEntity", null)
                         .WithMany("Ratings")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VideoEntityId");
                 });
 
-            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.Movie", b =>
+            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.UserEntity", b =>
                 {
                     b.Navigation("Ratings");
                 });
 
-            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.User", b =>
+            modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.VideoEntity", b =>
                 {
                     b.Navigation("Ratings");
                 });

@@ -27,7 +27,7 @@ namespace JAP_Task_1_MoviesApi.Services
 
         public async Task<MovieFullInfoDto> GetMovieById(int id)
         {
-            var movie = await _context.Movies
+            var movie = await _context.Videos
                         .Include(x => x.Actors).AsSingleQuery()
                         .Include(x => x.Ratings).AsSingleQuery()
                         .Select(x => new MovieFullInfoDto
@@ -47,7 +47,7 @@ namespace JAP_Task_1_MoviesApi.Services
 
         public async Task<List<MovieDto>> GetMoviesOrTvShows(int type, PaginationDto pagination)
         {
-            var videos = await _context.Movies
+            var videos = await _context.Videos
                                    .Include(x => x.Ratings)
                                    .Where(x => x.Type == type)
                                    .Select(x => new MovieDto
@@ -72,7 +72,7 @@ namespace JAP_Task_1_MoviesApi.Services
         public async Task<List<MovieDto>> GetFilteredMovies(string search)
         {
            List<MovieDto> data = new();
-            var query = _context.Movies.AsQueryable();
+            var query = _context.Videos.AsQueryable();
             AddFiltersForMovieSearch(search, ref query);
             data = await query.OrderByDescending(x => x.Ratings.Select(x => x.Value)
                                                                 .DefaultIfEmpty()

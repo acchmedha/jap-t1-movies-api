@@ -8,6 +8,6 @@ namespace JAP_Task_1_MoviesApi.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<VideoEntity> Movies { get; set; }
+        public List<VideoEntity> Videos { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JAP_Task_1_MoviesApi.Models
+namespace JAP_Task_1_MoviesApi.Entities
 {
     public class ServiceResponse<T>
     {
@@ -12,4 +12,3 @@ namespace JAP_Task_1_MoviesApi.Models
         public string Message { get; set; } = "Success";
     }
 }
-

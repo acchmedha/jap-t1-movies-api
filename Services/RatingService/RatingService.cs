@@ -1,4 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
+using JAP_Task_1_MoviesApi.Entities;
 using JAP_Task_1_MoviesApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@ namespace JAP_Task_1_MoviesApi.Services
             ServiceResponse<bool> response = new();
 
             var AddUserId = userId;
-            var userAlreadyAddedRating = await _context.Ratings.FirstOrDefaultAsync(x => x.UserId == AddUserId && x.MovieId == AddVideoId);
+            var userAlreadyAddedRating = await _context.Ratings.FirstOrDefaultAsync(x => x.UserId == AddUserId && x.VideoId == AddVideoId);
 
             if (userAlreadyAddedRating != null)
             {
@@ -32,7 +33,7 @@ namespace JAP_Task_1_MoviesApi.Services
             var addRating = new RatingEntity
             {
                 Value = AddValue,
-                MovieId = AddVideoId,
+                VideoId = AddVideoId,
                 UserId = AddUserId
             };
 

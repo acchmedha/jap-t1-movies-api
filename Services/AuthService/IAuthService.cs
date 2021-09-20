@@ -1,4 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.DTO;
+using JAP_Task_1_MoviesApi.Entities;
 using JAP_Task_1_MoviesApi.Models;
 using System;
 using System.Collections.Generic;

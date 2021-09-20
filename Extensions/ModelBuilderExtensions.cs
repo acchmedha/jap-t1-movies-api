@@ -834,22 +834,22 @@ namespace JAP_Task_1_MoviesApi.Extensions
 
             #region Ratings
             modelBuilder.Entity<RatingEntity>().HasData(
-                new RatingEntity { Id = 1, Value = 4.6, MovieId = 1, UserId = 1 },
-                new RatingEntity { Id = 2, Value = 4.5, MovieId = 2, UserId = 1 },
-                new RatingEntity { Id = 3, Value = 4.5, MovieId = 3, UserId = 1 },
-                new RatingEntity { Id = 4, Value = 4.5, MovieId = 4, UserId = 1 },
-                new RatingEntity { Id = 5, Value = 4.4, MovieId = 5, UserId = 1 },
-                new RatingEntity { Id = 6, Value = 4.35, MovieId = 6, UserId = 1 },
-                new RatingEntity { Id = 7, Value = 4.3, MovieId = 7, UserId = 1 },
-                new RatingEntity { Id = 8, Value = 4.2, MovieId = 8, UserId = 1 },
-                new RatingEntity { Id = 9, Value = 4.2, MovieId = 9, UserId = 1 },
-                new RatingEntity { Id = 10, Value = 4.2, MovieId = 10, UserId = 1 },
-                new RatingEntity { Id = 11, Value = 4.2, MovieId = 60, UserId = 1 },
-                new RatingEntity { Id = 12, Value = 4.2, MovieId = 61, UserId = 1 },
-                new RatingEntity { Id = 13, Value = 4.2, MovieId = 62, UserId = 1 },
-                new RatingEntity { Id = 14, Value = 4.2, MovieId = 63, UserId = 1 },
-                new RatingEntity { Id = 15, Value = 4.2, MovieId = 64, UserId = 1 },
-                new RatingEntity { Id = 16, Value = 4.2, MovieId = 65, UserId = 1 }
+                new RatingEntity { Id = 1, Value = 4.6, VideoId = 1, UserId = 1 },
+                new RatingEntity { Id = 2, Value = 4.5, VideoId = 2, UserId = 1 },
+                new RatingEntity { Id = 3, Value = 4.5, VideoId = 3, UserId = 1 },
+                new RatingEntity { Id = 4, Value = 4.5, VideoId = 4, UserId = 1 },
+                new RatingEntity { Id = 5, Value = 4.4, VideoId = 5, UserId = 1 },
+                new RatingEntity { Id = 6, Value = 4.35, VideoId = 6, UserId = 1 },
+                new RatingEntity { Id = 7, Value = 4.3, VideoId = 7, UserId = 1 },
+                new RatingEntity { Id = 8, Value = 4.2, VideoId = 8, UserId = 1 },
+                new RatingEntity { Id = 9, Value = 4.2, VideoId = 9, UserId = 1 },
+                new RatingEntity { Id = 10, Value = 4.2, VideoId = 10, UserId = 1 },
+                new RatingEntity { Id = 11, Value = 4.2, VideoId = 60, UserId = 1 },
+                new RatingEntity { Id = 12, Value = 4.2, VideoId = 61, UserId = 1 },
+                new RatingEntity { Id = 13, Value = 4.2, VideoId = 62, UserId = 1 },
+                new RatingEntity { Id = 14, Value = 4.2, VideoId = 63, UserId = 1 },
+                new RatingEntity { Id = 15, Value = 4.2, VideoId = 64, UserId = 1 },
+                new RatingEntity { Id = 16, Value = 4.2, VideoId = 65, UserId = 1 }
             );
             #endregion
         }

@@ -1,5 +1,6 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.DTO;
+using JAP_Task_1_MoviesApi.Entities;
 using JAP_Task_1_MoviesApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -124,7 +125,7 @@ namespace JAP_Task_1_MoviesApi.Services
                 new Claim(ClaimTypes.Name, user.Username)
             };
             
-            SymmetricSecurityKey key = new SymmetricSecurityKey(
+            SymmetricSecurityKey key = new(
                 Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value)
             );
 

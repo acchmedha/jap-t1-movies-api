@@ -11,7 +11,7 @@ namespace JAP_Task_1_MoviesApi.Data
         }
 
         public DbSet<UserEntity> Users { get; set; }
-        public DbSet<VideoEntity> Movies { get; set; }
+        public DbSet<VideoEntity> Videos { get; set; }
         public DbSet<ActorEntity> Actors { get; set; }
         public DbSet<RatingEntity> Ratings { get; set; }
 
