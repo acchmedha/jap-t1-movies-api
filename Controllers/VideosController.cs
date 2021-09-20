@@ -14,7 +14,6 @@ namespace JAP_Task_1_MoviesApi.Controllers
     public class VideosController : BaseApiController
     {
         private readonly IMovieService _movieService;
-
         public VideosController(IMovieService movieService)
         {
             _movieService = movieService;
@@ -47,8 +46,6 @@ namespace JAP_Task_1_MoviesApi.Controllers
             return Ok(await _movieService.GetFilteredMovies(search));
         }
 
-
-
         // GET: api/MoviesTvShows/id
         [HttpGet("{id}")]
         [Authorize]
@@ -57,41 +54,9 @@ namespace JAP_Task_1_MoviesApi.Controllers
             var movie = await _movieService.GetMovieById(id);
 
             if (movie == null)
-            {
                 return NotFound();
-            }
 
             return movie;
         }
-
-        // PUT: api/MoviesTvShows/5
-        [HttpPut("{id}")]
-        [Authorize]
-        public async Task<IActionResult> PutMovie(int id, MovieEntity movie)
-        {
-            if (id != movie.Id)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                await _movieService.UpdateMovieAsync(movie);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_movieService.MovieExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Ok("Movies updated");
-        }
-
     }
 }

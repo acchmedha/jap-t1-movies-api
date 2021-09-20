@@ -14,7 +14,6 @@ namespace JAP_Task_1_MoviesApi.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
         public RatingService(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;

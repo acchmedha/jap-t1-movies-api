@@ -13,9 +13,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
         public RatingsController(IRatingService ratingService)
         {
-
             _ratingService = ratingService;
-
         }
 
         [HttpPost("add")]

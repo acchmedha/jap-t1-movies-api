@@ -4,9 +4,6 @@ using JAP_Task_1_MoviesApi.DTO;
 using JAP_Task_1_MoviesApi.Models;
 using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace JAP_Task_1_MoviesApi.Controllers
@@ -14,8 +11,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
     public class AuthController : BaseApiController
     {
         private readonly IAuthService _authService;
-
-        public AuthController(ApplicationDbContext context, IAuthService authService, IMapper mapper)
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
@@ -37,6 +33,5 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
             return (response.Success) ? Ok(response) : BadRequest(response);
         }
-
     }
 }
