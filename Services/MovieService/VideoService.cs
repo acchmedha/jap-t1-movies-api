@@ -45,11 +45,11 @@ namespace JAP_Task_1_MoviesApi.Services
             return movie;
         }
 
-        public async Task<List<MovieDto>> GetMoviesOrTvShows(int type, PaginationDto pagination)
+        public async Task<List<MovieDto>> GetMoviesOrTvShows(VideoEnum videoType, PaginationDto pagination)
         {
             var videos = await _context.Videos
                                    .Include(x => x.Ratings)
-                                   .Where(x => x.Type == type)
+                                   .Where(x => x.Type == videoType)
                                    .Select(x => new MovieDto
                                    {
                                        Id = x.Id,

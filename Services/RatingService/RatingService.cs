@@ -1,6 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Entities;
-using JAP_Task_1_MoviesApi.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;

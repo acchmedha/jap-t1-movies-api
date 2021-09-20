@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JAP_Task_1_MoviesApi.Migrations
 {
     [DbContext(typeof(MoviesAppDbContext))]
-    [Migration("20210920201850_InitialMigration")]
+    [Migration("20210920223713_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -654,11 +654,11 @@ namespace JAP_Task_1_MoviesApi.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 9, 20, 22, 18, 49, 916, DateTimeKind.Local).AddTicks(6119),
+                            CreatedAt = new DateTime(2021, 9, 21, 0, 37, 12, 722, DateTimeKind.Local).AddTicks(7756),
                             FirstName = "Admin",
                             LastName = "Admin",
-                            PasswordHash = new byte[] { 82, 103, 230, 133, 202, 246, 186, 177, 226, 221, 213, 218, 146, 195, 250, 173, 121, 181, 77, 238, 220, 105, 32, 7, 93, 230, 130, 195, 80, 168, 214, 251, 239, 124, 29, 197, 214, 203, 54, 226, 22, 120, 16, 166, 74, 77, 161, 110, 45, 38, 14, 106, 132, 219, 87, 45, 12, 153, 28, 153, 156, 6, 226, 224 },
-                            PasswordSalt = new byte[] { 119, 208, 54, 218, 238, 205, 20, 123, 216, 159, 124, 255, 71, 34, 243, 146, 67, 72, 189, 108, 124, 36, 13, 140, 200, 156, 108, 51, 124, 157, 214, 36, 112, 181, 254, 33, 88, 151, 212, 243, 159, 110, 114, 92, 83, 32, 48, 238, 24, 6, 6, 79, 13, 170, 189, 6, 82, 76, 98, 132, 81, 226, 87, 163, 215, 31, 208, 119, 186, 176, 226, 106, 23, 72, 125, 110, 188, 249, 7, 56, 141, 78, 202, 28, 232, 14, 110, 129, 179, 33, 25, 248, 233, 146, 54, 9, 68, 185, 253, 161, 209, 124, 214, 224, 232, 160, 157, 93, 245, 8, 59, 191, 111, 77, 83, 7, 44, 118, 140, 26, 100, 124, 76, 158, 172, 110, 194, 192 },
+                            PasswordHash = new byte[] { 55, 56, 19, 154, 251, 194, 78, 249, 118, 169, 248, 234, 134, 41, 209, 132, 68, 130, 142, 212, 125, 19, 143, 242, 52, 45, 14, 59, 240, 107, 30, 210, 142, 196, 158, 227, 141, 119, 251, 86, 213, 48, 42, 67, 111, 210, 253, 244, 213, 16, 198, 148, 171, 209, 24, 216, 211, 187, 46, 199, 15, 121, 136, 70 },
+                            PasswordSalt = new byte[] { 43, 221, 186, 48, 161, 37, 42, 96, 91, 135, 113, 99, 18, 18, 87, 211, 9, 17, 108, 18, 160, 188, 44, 151, 99, 213, 114, 51, 190, 180, 248, 183, 23, 95, 42, 124, 15, 137, 87, 220, 114, 116, 163, 62, 76, 234, 59, 200, 87, 6, 220, 220, 69, 7, 94, 54, 87, 249, 22, 12, 172, 46, 251, 213, 108, 2, 105, 15, 59, 108, 85, 47, 239, 176, 51, 167, 204, 39, 20, 0, 14, 103, 234, 67, 51, 77, 21, 200, 180, 194, 38, 234, 143, 0, 230, 228, 237, 180, 217, 32, 231, 50, 202, 89, 77, 248, 91, 67, 161, 16, 89, 216, 123, 28, 64, 78, 201, 3, 105, 187, 14, 120, 148, 188, 42, 120, 50, 246 },
                             Username = "admin"
                         });
                 });
@@ -682,8 +682,8 @@ namespace JAP_Task_1_MoviesApi.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<short>("Type")
-                        .HasColumnType("smallint");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -697,7 +697,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/iXbWpCkIauBMStSTUT9v4GXvdgH.jpg",
                             ReleaseDate = new DateTime(2021, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Suicide Squad",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -706,7 +706,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/cP7odDzzFBD9ycxj2laTeFWGLjD.jpg",
                             ReleaseDate = new DateTime(2021, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Sweet Girl",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -715,7 +715,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
                             ReleaseDate = new DateTime(2021, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Jungle Cruise",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -724,7 +724,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/ic0intvXZSfBlYPIvWXpU1ivUCO.jpg",
                             ReleaseDate = new DateTime(2021, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "PAW Patrol: The Movie",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -733,7 +733,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/wrlQnKHLCBheXMNWotyr5cVDqNM.jpg",
                             ReleaseDate = new DateTime(2021, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Eggs Run",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -742,7 +742,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
                             ReleaseDate = new DateTime(2021, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Black Widow",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -751,7 +751,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg",
                             ReleaseDate = new DateTime(2021, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Space Jam: A New Legacy",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -760,7 +760,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/7p0O4mKYLIhU2E5Zcq9Z3vOZ4e9.jpg",
                             ReleaseDate = new DateTime(2021, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Narco Sub",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -769,7 +769,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/hEqw9swA8gFJuNjgWYEypwZfkZg.jpg",
                             ReleaseDate = new DateTime(2021, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Free Guy",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -778,7 +778,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/niw2AKHz6XmwiRMLWaoyAOAti0G.jpg",
                             ReleaseDate = new DateTime(2021, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Infinite",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -787,7 +787,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/fBJducGBcmrcIOQdhm4BUBNDiMu.jpg",
                             ReleaseDate = new DateTime(2021, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Beckett",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -796,7 +796,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
                             ReleaseDate = new DateTime(2021, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "F9",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -805,7 +805,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/kv2Qk9MKFFQo4WQPaYta599HkJP.jpg",
                             ReleaseDate = new DateTime(2021, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Boss Baby",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -814,7 +814,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/zvGC5jX5wQmU1GgPc0VGZz7Mtcs.jpg",
                             ReleaseDate = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "El mesero",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -823,7 +823,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/jTswp6KyDYKtvC52GbHagrZbGvD.jpg",
                             ReleaseDate = new DateTime(2021, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Luca",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -832,7 +832,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg",
                             ReleaseDate = new DateTime(2021, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Tomorrow War",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -841,7 +841,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/oxNoVgbu2v9ETL93Kri1pw8osYf.jpg",
                             ReleaseDate = new DateTime(2021, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Breathless",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -850,7 +850,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/ttpKJ7XQxDZV252KNEHXtykYT41.jpg",
                             ReleaseDate = new DateTime(2021, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Last Mercenary",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -859,7 +859,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/mab5wPeGVjbMyYMzyzfdKKnG9cl.jpg",
                             ReleaseDate = new DateTime(2021, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Loud House Movie",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -868,7 +868,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/gYZAHan5CHPFXORpQMvOjCTug4E.jpg",
                             ReleaseDate = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Jolt",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -877,7 +877,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/xKCtoYHUyX8zAg68eemnYa2orep.jpg",
                             ReleaseDate = new DateTime(2021, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Given",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -886,7 +886,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/2CAL2433ZeIihfX1Hb2139CX0pW.jpg",
                             ReleaseDate = new DateTime(1995, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Dilwale Dulhania Le Jayenge",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -895,7 +895,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
                             ReleaseDate = new DateTime(1994, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Shawshank Redemption",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -904,7 +904,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
                             ReleaseDate = new DateTime(1972, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Godfather",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -913,7 +913,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/x5o8cLZfEXMoZczTYWLrUo1P7UJ.jpg",
                             ReleaseDate = new DateTime(2020, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Gabriel's Inferno Part II",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -922,7 +922,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/fYtHxTxlhzD4QWfEbrC1rypysSD.jpg",
                             ReleaseDate = new DateTime(2020, 11, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Gabriel's Inferno Part III",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -931,7 +931,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/oyG9TL7FcRP4EZ9Vid6uKzwdndz.jpg",
                             ReleaseDate = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Gabriel's Inferno",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -940,7 +940,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
                             ReleaseDate = new DateTime(1993, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Schindler's List",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -949,7 +949,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg",
                             ReleaseDate = new DateTime(1974, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Godfather: Part II",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -958,7 +958,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg",
                             ReleaseDate = new DateTime(2016, 8, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Your Name.",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -967,7 +967,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/oOZITZodAja6optBgLh8ZZrgzbb.jpg",
                             ReleaseDate = new DateTime(2021, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "After We Fell",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -976,7 +976,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
                             ReleaseDate = new DateTime(2001, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Spirited Away",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -985,7 +985,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/5ZjMNJJabwBEnGVQoR2yoMEL9um.jpg",
                             ReleaseDate = new DateTime(2020, 11, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Black Beauty",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -994,7 +994,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
                             ReleaseDate = new DateTime(2019, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Parasite",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1003,7 +1003,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/velWPhVMQeQKcxggNEU8YmIo52R.jpg",
                             ReleaseDate = new DateTime(1999, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Green Mile",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1012,7 +1012,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/x9yjkm9gIz5qI5fJMUTfBnWiB2o.jpg",
                             ReleaseDate = new DateTime(2013, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Hope",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1021,7 +1021,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/e02s4wmTAExkKg0yF4dEG98ZRpK.jpg",
                             ReleaseDate = new DateTime(1957, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "12 Angry Men",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1030,7 +1030,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://images.penguinrandomhouse.com/cover/9780345320223",
                             ReleaseDate = new DateTime(1980, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: The Empire Strikes Back (Episode V)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1039,7 +1039,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/CGJAj5kNWQZypNgUSTTQrFlnG.jpg",
                             ReleaseDate = new DateTime(2021, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Jurassic Hunt",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1048,7 +1048,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/hRMfgGFRAZIlvwVWy8DYJdLTpvN.jpg",
                             ReleaseDate = new DateTime(2021, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Don't Breathe 2",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1057,7 +1057,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/6Y9fl8tD1xtyUrOHV2MkCYTpzgi.jpg",
                             ReleaseDate = new DateTime(2021, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "SAS: Red Notice",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1066,7 +1066,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/clDFqATL4zcE7LzUwkrVj3zHvk7.jpg",
                             ReleaseDate = new DateTime(2021, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Cinderella",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1075,7 +1075,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://image.tmdb.org/t/p/w500/dGv2BWjzwAz6LB8a8JeRIZL8hSz.jpg",
                             ReleaseDate = new DateTime(2021, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Malignant",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1084,7 +1084,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://static.wikia.nocookie.net/blacklist/images/5/57/Season_7_Poster.jpg",
                             ReleaseDate = new DateTime(2013, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Blacklist",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1093,7 +1093,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://kbimages1-a.akamaihd.net/538b1473-6d45-47f4-b16e-32a0a6ba7f9a/1200/1200/False/star-wars-episode-iv-a-new-hope-3.jpg",
                             ReleaseDate = new DateTime(1997, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: A New Hope (Episode IV)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1102,7 +1102,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/I/91LlN7J+Z9L._SL1500_.jpg",
                             ReleaseDate = new DateTime(1983, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: Return of the Jedi (Episode VI)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1111,7 +1111,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_.jpg",
                             ReleaseDate = new DateTime(2015, 11, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: The Force Awakens (Episode VII)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1120,7 +1120,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://i.pinimg.com/originals/f4/5a/ea/f45aea75f65c0feb5cbe168f17a9a087.jpg",
                             ReleaseDate = new DateTime(2017, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: The Last Jedi (Episode VIII)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1129,7 +1129,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-rise-of-skywalker-theatrical-poster-1000_ebc74357.jpeg?region=0%2C0%2C891%2C1372",
                             ReleaseDate = new DateTime(2019, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: The Rise of Skywalker (Episode IX)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1138,7 +1138,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://play-lh.googleusercontent.com/sR1pzOxnF50WLR3vUqXYFvY01_tLD4XPn1RDHf0Xh-W04Vek_3iiZ98U7Db2JcmrqS8",
                             ReleaseDate = new DateTime(1999, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: The Phantom Menace (Episode I)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1147,7 +1147,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/M/MV5BMDAzM2M0Y2UtZjRmZi00MzVlLTg4MjEtOTE3NzU5ZDVlMTU5XkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg",
                             ReleaseDate = new DateTime(2002, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: Attack of the Clones (Episode II)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1156,7 +1156,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://play-lh.googleusercontent.com/mMyoXM8bf72KK-Udap4-hAvqqdXgn0AIBXkS8zejT0RXITIh8oK9a-SYIVk89CA0rHJi",
                             ReleaseDate = new DateTime(2005, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Star Wars: Revenge of the Sith (Episode III)",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1165,7 +1165,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://i.pinimg.com/originals/17/aa/71/17aa718c1ab15b482505b8431cf596fc.jpg",
                             ReleaseDate = new DateTime(2009, 11, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Avatar",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1174,7 +1174,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://upload.wikimedia.org/wikipedia/en/4/45/Good_the_bad_and_the_ugly_poster.jpg",
                             ReleaseDate = new DateTime(1996, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Good, the Bad and the Ugly",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1183,7 +1183,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://prod.miramax.digital/media/assets/Pulp-Fiction1.png",
                             ReleaseDate = new DateTime(1994, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Pulp Fiction",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1192,7 +1192,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://images.moviesanywhere.com/198e228b071c60f5ad57e5f62fe60029/ff22cad6-2218-414d-b853-3f95d76905c7.jpg?h=375&resize=fit&w=250",
                             ReleaseDate = new DateTime(2001, 12, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Lord of the Rings: The Fellowship of the Ring",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1201,7 +1201,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
                             ReleaseDate = new DateTime(1999, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Fight Club",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1210,7 +1210,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/37a5b434647543.56d846b10ca45.jpg",
                             ReleaseDate = new DateTime(1994, 7, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Forrest Gump",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1219,7 +1219,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/I/81p+xe8cbnL._SY445_.jpg",
                             ReleaseDate = new DateTime(2010, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Inception",
-                            Type = (short)0
+                            Type = 0
                         },
                         new
                         {
@@ -1228,7 +1228,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://blackwells.co.uk/jacket/l/9781785943041.jpg",
                             ReleaseDate = new DateTime(2016, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Planet Earth II",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1237,7 +1237,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/I/91X9p6+58KL._SY445_.jpg",
                             ReleaseDate = new DateTime(2010, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Planet Earth",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1246,7 +1246,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
                             ReleaseDate = new DateTime(2008, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Breaking Bad",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1255,7 +1255,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://i.dailymail.co.uk/i/pix/2017/02/13/01/3D24EF6B00000578-4215748-image-a-63_1486948627611.jpg",
                             ReleaseDate = new DateTime(2001, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Band of Brothers",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1264,7 +1264,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://i.redd.it/bv5isr69yr531.png",
                             ReleaseDate = new DateTime(1986, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Chernobyl",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1273,7 +1273,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://tvshows.today/wp-content/uploads/the-wire-season-1-poster.jpg",
                             ReleaseDate = new DateTime(2008, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Wire",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1282,7 +1282,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://cdn.shopify.com/s/files/1/0747/3829/products/mL1006_1024x1024.jpg?v=1571445246",
                             ReleaseDate = new DateTime(2017, 10, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Blue Planet II",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1291,7 +1291,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://www.penguin.co.uk/content/dam/prh/books/111/1115210/9780593079768.jpg.transform/PRHDesktopWide_small/image.jpg",
                             ReleaseDate = new DateTime(2019, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Our Planet",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1300,7 +1300,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5945/5945188_sa.jpg;maxHeight=640;maxWidth=550",
                             ReleaseDate = new DateTime(2014, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Cosmos: A Spacetime Odyssey",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1309,7 +1309,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://images-na.ssl-images-amazon.com/images/I/914eUC4XPML.jpg",
                             ReleaseDate = new DateTime(2005, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Avatar: The Last Airbender",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1318,7 +1318,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://www.themoviedb.org/t/p/original/4WJ9kNejI8apl3f8hMNwo8V3hGT.jpg",
                             ReleaseDate = new DateTime(1980, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Cosmos",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1327,7 +1327,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_FMjpg_UX1000_.jpg",
                             ReleaseDate = new DateTime(2011, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Game of Thrones",
-                            Type = (short)1
+                            Type = 1
                         },
                         new
                         {
@@ -1336,7 +1336,7 @@ namespace JAP_Task_1_MoviesApi.Migrations
                             PosterPath = "https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg",
                             ReleaseDate = new DateTime(1999, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Sopranos",
-                            Type = (short)1
+                            Type = 1
                         });
                 });
 

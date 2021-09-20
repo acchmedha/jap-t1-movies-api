@@ -17,6 +17,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
             _ratingService = ratingService;
             _httpContextAccessor = httpContextAccessor;
         }
+
         int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
         [HttpPost("add")]
@@ -25,8 +26,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
         {
             var response = await _ratingService.AddRating(ratingReq.Value, ratingReq.MovieId, GetUserId());
 
-            if (!response.Success)
-                return BadRequest(response);
+            if (!response.Success) return BadRequest(response);
 
             return Ok(response);
         }

@@ -33,16 +33,16 @@ namespace JAP_Task_1_MoviesApi.Controllers
         [Authorize]
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetTvShows([FromQuery] PaginationDto pagination, string search = null)
         {
-            if (search == null) return Ok(await _movieService.GetMoviesOrTvShows(1, pagination));
+            if (search == null) return Ok(await _movieService.GetMoviesOrTvShows(VideoEnum.TvShow, pagination));
             return Ok(await _movieService.GetFilteredMovies(search));
         }
 
         // GET: api/videos
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<MovieDto>>> GetFilteredMovies([FromQuery] PaginationDto pagination, string search = null, int type = 0)
+        public async Task<ActionResult<List<MovieDto>>> GetFilteredMovies([FromQuery] PaginationDto pagination, string search = null, VideoEnum videoType = VideoEnum.Movie)
         {
-            if (search == null) return Ok(await _movieService.GetMoviesOrTvShows(type, pagination));
+            if (search == null) return Ok(await _movieService.GetMoviesOrTvShows(videoType, pagination));
             return Ok(await _movieService.GetFilteredMovies(search));
         }
 
