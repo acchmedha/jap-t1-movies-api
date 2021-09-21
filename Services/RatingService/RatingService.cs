@@ -20,7 +20,7 @@ namespace JAP_Task_1_MoviesApi.Services
             if (addValue < 1 || addValue > 5)
                 throw new Exception("Rating must be between 1 and 5!");
 
-            if ((await _context.Ratings.FirstOrDefaultAsync(x => x.UserId == userId && x.VideoId == addVideoId)) != null)
+            if ((await _context.Ratings.FirstOrDefaultAsync(x => x.UserEntityId == userId && x.VideoEntityId == addVideoId)) != null)
                 throw new Exception("You already rated this item");
             
             if (await _context.Videos.FirstOrDefaultAsync(x => x.Id == addVideoId) == null)
@@ -29,7 +29,7 @@ namespace JAP_Task_1_MoviesApi.Services
             if (await _context.Users.FirstOrDefaultAsync(x => x.Id == userId) == null)
                 throw new Exception("The given user does not exist!");
 
-            await _context.Ratings.AddAsync( new() { Value = addValue, VideoId = addVideoId, UserId = userId});
+            await _context.Ratings.AddAsync( new() { Value = addValue, VideoEntityId = addVideoId, UserEntityId = userId});
             await _context.SaveChangesAsync();
 
             return new() { Data = true, Success = true, Message = "Successfully added rating" };

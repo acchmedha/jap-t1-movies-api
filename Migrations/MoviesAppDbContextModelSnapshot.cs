@@ -481,19 +481,13 @@ namespace JAP_Task_1_MoviesApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("UserEntityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
+                    b.Property<int>("UserEntityId")
                         .HasColumnType("int");
 
                     b.Property<double>("Value")
                         .HasColumnType("float");
 
-                    b.Property<int?>("VideoEntityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VideoId")
+                    b.Property<int>("VideoEntityId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -508,114 +502,114 @@ namespace JAP_Task_1_MoviesApi.Migrations
                         new
                         {
                             Id = 1,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.5999999999999996,
-                            VideoId = 1
+                            VideoEntityId = 1
                         },
                         new
                         {
                             Id = 2,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.5,
-                            VideoId = 2
+                            VideoEntityId = 2
                         },
                         new
                         {
                             Id = 3,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.5,
-                            VideoId = 3
+                            VideoEntityId = 3
                         },
                         new
                         {
                             Id = 4,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.5,
-                            VideoId = 4
+                            VideoEntityId = 4
                         },
                         new
                         {
                             Id = 5,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.4000000000000004,
-                            VideoId = 5
+                            VideoEntityId = 5
                         },
                         new
                         {
                             Id = 6,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.3499999999999996,
-                            VideoId = 6
+                            VideoEntityId = 6
                         },
                         new
                         {
                             Id = 7,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2999999999999998,
-                            VideoId = 7
+                            VideoEntityId = 7
                         },
                         new
                         {
                             Id = 8,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 8
+                            VideoEntityId = 8
                         },
                         new
                         {
                             Id = 9,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 9
+                            VideoEntityId = 9
                         },
                         new
                         {
                             Id = 10,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 10
+                            VideoEntityId = 10
                         },
                         new
                         {
                             Id = 11,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 60
+                            VideoEntityId = 60
                         },
                         new
                         {
                             Id = 12,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 61
+                            VideoEntityId = 61
                         },
                         new
                         {
                             Id = 13,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 62
+                            VideoEntityId = 62
                         },
                         new
                         {
                             Id = 14,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 63
+                            VideoEntityId = 63
                         },
                         new
                         {
                             Id = 15,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 64
+                            VideoEntityId = 64
                         },
                         new
                         {
                             Id = 16,
-                            UserId = 1,
+                            UserEntityId = 1,
                             Value = 4.2000000000000002,
-                            VideoId = 65
+                            VideoEntityId = 65
                         });
                 });
 
@@ -652,11 +646,11 @@ namespace JAP_Task_1_MoviesApi.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 9, 21, 0, 37, 12, 722, DateTimeKind.Local).AddTicks(7756),
+                            CreatedAt = new DateTime(2021, 9, 21, 2, 16, 6, 106, DateTimeKind.Local).AddTicks(2321),
                             FirstName = "Admin",
                             LastName = "Admin",
-                            PasswordHash = new byte[] { 55, 56, 19, 154, 251, 194, 78, 249, 118, 169, 248, 234, 134, 41, 209, 132, 68, 130, 142, 212, 125, 19, 143, 242, 52, 45, 14, 59, 240, 107, 30, 210, 142, 196, 158, 227, 141, 119, 251, 86, 213, 48, 42, 67, 111, 210, 253, 244, 213, 16, 198, 148, 171, 209, 24, 216, 211, 187, 46, 199, 15, 121, 136, 70 },
-                            PasswordSalt = new byte[] { 43, 221, 186, 48, 161, 37, 42, 96, 91, 135, 113, 99, 18, 18, 87, 211, 9, 17, 108, 18, 160, 188, 44, 151, 99, 213, 114, 51, 190, 180, 248, 183, 23, 95, 42, 124, 15, 137, 87, 220, 114, 116, 163, 62, 76, 234, 59, 200, 87, 6, 220, 220, 69, 7, 94, 54, 87, 249, 22, 12, 172, 46, 251, 213, 108, 2, 105, 15, 59, 108, 85, 47, 239, 176, 51, 167, 204, 39, 20, 0, 14, 103, 234, 67, 51, 77, 21, 200, 180, 194, 38, 234, 143, 0, 230, 228, 237, 180, 217, 32, 231, 50, 202, 89, 77, 248, 91, 67, 161, 16, 89, 216, 123, 28, 64, 78, 201, 3, 105, 187, 14, 120, 148, 188, 42, 120, 50, 246 },
+                            PasswordHash = new byte[] { 87, 94, 4, 157, 35, 104, 99, 113, 19, 227, 159, 118, 221, 141, 100, 9, 242, 68, 27, 127, 199, 5, 92, 104, 11, 18, 230, 154, 140, 132, 245, 240, 59, 51, 233, 224, 35, 219, 155, 165, 244, 11, 130, 206, 150, 194, 77, 161, 247, 1, 193, 155, 22, 100, 22, 247, 49, 67, 120, 248, 225, 68, 169, 144 },
+                            PasswordSalt = new byte[] { 36, 253, 182, 166, 78, 197, 165, 105, 243, 15, 113, 135, 90, 220, 93, 177, 100, 23, 121, 153, 207, 90, 136, 17, 62, 232, 4, 28, 65, 206, 170, 43, 172, 165, 18, 53, 112, 225, 246, 178, 254, 213, 3, 122, 55, 103, 228, 130, 117, 134, 233, 74, 226, 106, 87, 71, 209, 204, 161, 253, 114, 174, 107, 121, 11, 177, 142, 131, 44, 125, 73, 180, 108, 34, 235, 237, 193, 97, 176, 218, 75, 25, 255, 92, 88, 126, 12, 18, 122, 35, 59, 225, 104, 132, 214, 15, 240, 127, 138, 191, 84, 54, 47, 120, 161, 190, 50, 86, 185, 180, 108, 71, 109, 157, 175, 189, 130, 60, 166, 190, 116, 204, 238, 98, 82, 10, 235, 204 },
                             Username = "admin"
                         });
                 });
@@ -1357,11 +1351,15 @@ namespace JAP_Task_1_MoviesApi.Migrations
                 {
                     b.HasOne("JAP_Task_1_MoviesApi.Models.UserEntity", null)
                         .WithMany("Ratings")
-                        .HasForeignKey("UserEntityId");
+                        .HasForeignKey("UserEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("JAP_Task_1_MoviesApi.Models.VideoEntity", null)
                         .WithMany("Ratings")
-                        .HasForeignKey("VideoEntityId");
+                        .HasForeignKey("VideoEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("JAP_Task_1_MoviesApi.Models.UserEntity", b =>

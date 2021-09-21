@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.DTO;
+using JAP_Task_1_MoviesApi.Entities;
 using JAP_Task_1_MoviesApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,7 +14,6 @@ namespace JAP_Task_1_MoviesApi.Services
 {
     public class VideoService : IVideoService
     {
-
         private readonly MoviesAppDbContext _context;
         private readonly IMapper _mapper;
 
@@ -23,14 +23,14 @@ namespace JAP_Task_1_MoviesApi.Services
             _mapper = mapper;
         }
 
-       
-
-        public async Task<MovieFullInfoDto> GetMovieById(int id)
+        public async Task<ServiceResponse<VideoFullInfoDto>> GetVideo(int id)
         {
-            var movie = await _context.Videos
+            ServiceResponse<VideoFullInfoDto> serviceResponse = new()
+            {
+                Data = await _context.Videos
                         .Include(x => x.Actors).AsSingleQuery()
                         .Include(x => x.Ratings).AsSingleQuery()
-                        .Select(x => new MovieFullInfoDto
+                        .Select(x => new VideoFullInfoDto
                         {
                             Id = x.Id,
                             Title = x.Title,
@@ -38,16 +38,22 @@ namespace JAP_Task_1_MoviesApi.Services
                             PosterPath = x.PosterPath,
                             ReleaseDate = x.ReleaseDate,
                             AverageRating = x.Ratings.Select(x => x.Value).DefaultIfEmpty().Average(),
-                            Actors = x.Actors.Select(x => new ActorMovieDto { Name = x.FirstName, Surname = x.LastName }).ToList(),
+                            Actors = x.Actors.Select(x => new ActorVideoDto { FirstName = x.FirstName, LastName = x.LastName })
+                            .ToList(),
                         })
-                        .FirstOrDefaultAsync(x => x.Id == id);
+                        .FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("Video not found"),
+                Message = "Success",
+                Success = true
+            };
 
-            return movie;
+            return serviceResponse;
         }
 
-        public async Task<List<MovieDto>> GetMoviesOrTvShows(VideoEnum videoType, PaginationDto pagination)
+        public async Task<ServiceResponse<List<MovieDto>>> GetVideos(VideoEnum videoType, Pagination pagination)
         {
-            var videos = await _context.Videos
+            ServiceResponse<List<MovieDto>> serviceResponse = new()
+            {
+                Data = await _context.Videos
                                    .Include(x => x.Ratings)
                                    .Where(x => x.Type == videoType)
                                    .Select(x => new MovieDto
@@ -58,30 +64,37 @@ namespace JAP_Task_1_MoviesApi.Services
                                        PosterPath = x.PosterPath,
                                        ReleaseDate = x.ReleaseDate,
                                        AverageRating = x.Ratings.Select(x => x.Value)
-                                                                             .DefaultIfEmpty()
-                                                                             .Average()
+                                                                 .DefaultIfEmpty()
+                                                                 .Average()
                                    })
                                    .OrderByDescending(x => x.AverageRating)
                                    .Skip((pagination.PageNumber - 1) * pagination.PageSize)
                                    .Take(pagination.PageSize)
-                                   .ToListAsync();
+                                   .ToListAsync(),
+                Message = "Success",
+                Success = true
+            };
 
-            return videos;
+            return serviceResponse;
         }
 
-        public async Task<List<MovieDto>> GetFilteredMovies(string search)
+        public async Task<ServiceResponse<List<MovieDto>>> GetFilteredVideos(string search)
         {
-           List<MovieDto> data = new();
             var query = _context.Videos.AsQueryable();
             AddFiltersForMovieSearch(search, ref query);
-            data = await query.OrderByDescending(x => x.Ratings.Select(x => x.Value)
+
+            return new()
+            {
+                Data = await query.OrderByDescending(x => x.Ratings.Select(x => x.Value)
                                                                 .DefaultIfEmpty()
                                                                 .Average())
                                                                 .Select(x => _mapper.Map<MovieDto>(x))
-                                                                .ToListAsync();
-
-            return data;
+                                                                .ToListAsync(),
+                Message = "Success",
+                Success = true
+            };    
         }
+
         private static void AddFiltersForMovieSearch(string Search, ref IQueryable<VideoEntity> query)
         {
 
@@ -123,13 +136,6 @@ namespace JAP_Task_1_MoviesApi.Services
                 else setDefaultSearchQuery(ref query);
             }
             else setDefaultSearchQuery(ref query);
-
-        }
-
-
-        public bool MovieExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace JAP_Task_1_MoviesApi.Models
     {
         public int Id { get; set; }
         public double Value { get; set; }
-        public int VideoId { get; set; }
-        public int UserId { get; set; }
+        public int VideoEntityId { get; set; }
+        public int UserEntityId { get; set; }
     }
 }

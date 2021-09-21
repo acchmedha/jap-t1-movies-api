@@ -1,62 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using JAP_Task_1_MoviesApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using JAP_Task_1_MoviesApi.Services;
 using JAP_Task_1_MoviesApi.DTO;
+using JAP_Task_1_MoviesApi.Requests;
+using JAP_Task_1_MoviesApi.Entities;
+using JAP_Task_1_MoviesApi.Models;
 
 namespace JAP_Task_1_MoviesApi.Controllers
 {
     public class VideosController : BaseApiController
     {
-        private readonly IVideoService _movieService;
-        public VideosController(IVideoService movieService)
+        private readonly IVideoService _videoService;
+        public VideosController(IVideoService videoService)
         {
-            _movieService = movieService;
+            _videoService = videoService;
         }
 
-        // GET: api/videos/movies
-        [HttpGet("movies")]
-        [Authorize]
-        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies([FromQuery] PaginationDto pagination)
-        {
-            var movies = await _movieService.GetMoviesOrTvShows(0, pagination);
-            return Ok(movies);
-        }
-
-        // GET: api/videos/tvshows
-        [HttpGet("tv-shows")]
-        [Authorize]
-        public async Task<ActionResult<IEnumerable<MovieDto>>> GetTvShows([FromQuery] PaginationDto pagination, string search = null)
-        {
-            if (search == null) return Ok(await _movieService.GetMoviesOrTvShows(VideoEnum.TvShow, pagination));
-            return Ok(await _movieService.GetFilteredMovies(search));
-        }
-
-        // GET: api/videos
+        // GET: api/Videos
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<MovieDto>>> GetFilteredMovies([FromQuery] PaginationDto pagination, string search = null, VideoEnum videoType = VideoEnum.Movie)
+        public async Task<ActionResult<List<MovieDto>>> GetFilteredVideos([FromQuery] GetVideosRequest request)
         {
-            if (search == null) return Ok(await _movieService.GetMoviesOrTvShows(videoType, pagination));
-            return Ok(await _movieService.GetFilteredMovies(search));
+            if (request.Search == null) return Ok(await _videoService.GetVideos(request.VideoType, request.Pagination));
+
+            return Ok(await _videoService.GetFilteredVideos(request.Search));
         }
 
-        // GET: api/MoviesTvShows/id
+        // GET: api/Videos/id
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<MovieFullInfoDto>> GetMovie(int id)
+        public async Task<ActionResult<VideoFullInfoDto>> GetMovie(int id)
         {
-            var movie = await _movieService.GetMovieById(id);
+            var response = await _videoService.GetVideo(id);
 
-            if (movie == null)
-                return NotFound();
-
-            return movie;
+            return response.Success ? Ok(response) : NotFound();
         }
     }
 }
