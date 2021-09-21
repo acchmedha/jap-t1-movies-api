@@ -1,13 +1,13 @@
 ﻿using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Helpers;
-using JAP_Task_1_MoviesApi.Services.AuthService;
-using JAP_Task_1_MoviesApi.Services.MovieService;
-using JAP_Task_1_MoviesApi.Services.RatingService;
+using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace JAP_Task_1_MoviesApi.Extensions
 {
@@ -15,14 +15,28 @@ namespace JAP_Task_1_MoviesApi.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddScoped<IMovieService, MovieRepository>();
+            services.AddScoped<IVideoService, VideoService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IRatingService, RatingService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<MoviesAppDbContext>(options =>
             {
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+            });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JapTask1BackendCorrection", Version = "v1" });
+
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Description = "Standard Authorization header using the Bearer token",
+                    In = ParameterLocation.Header,
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
 
             return services;

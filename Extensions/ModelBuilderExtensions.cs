@@ -1,5 +1,5 @@
 ﻿using JAP_Task_1_MoviesApi.Models;
-using JAP_Task_1_MoviesApi.Services.AuthService;
+using JAP_Task_1_MoviesApi.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -12,83 +12,83 @@ namespace JAP_Task_1_MoviesApi.Extensions
         {
 
             #region Actor static data
-            modelBuilder.Entity<Actor>().HasData(
-                new Actor { Id = 1, Name = "Morgan", Surname = "Freeman" },
-                new Actor { Id = 2, Name = "Bob", Surname = "Gunton" },
-                new Actor { Id = 3, Name = "Tim", Surname = "Robbins" },
-                new Actor { Id = 4, Name = "Marlon", Surname = "Brando" },
-                new Actor { Id = 5, Name = "Al", Surname = "Pacino" },
-                new Actor { Id = 6, Name = "James", Surname = "Caan" },
-                new Actor { Id = 7, Name = "Robert", Surname = "De Niro" },
-                new Actor { Id = 8, Name = "Robert", Surname = "Duvall" },
-                new Actor { Id = 9, Name = "Christian", Surname = "Bale" },
-                new Actor { Id = 10, Name = "Heath", Surname = "Ledger" },
-                new Actor { Id = 11, Name = "Aaron", Surname = "Eckhart" },
-                new Actor { Id = 12, Name = "Henry", Surname = "Fonda" },
-                new Actor { Id = 13, Name = "Lee", Surname = "J. Cobb" },
-                new Actor { Id = 14, Name = "Martin", Surname = "Balsam" },
-                new Actor { Id = 15, Name = "Liam", Surname = "Neeson" },
-                new Actor { Id = 16, Name = "Ralph", Surname = "Fiennes" },
-                new Actor { Id = 17, Name = "Ben", Surname = "Kingsley" },
-                new Actor { Id = 18, Name = "Elijah", Surname = "Wood" },
-                new Actor { Id = 19, Name = "Viggo", Surname = "Mortensen" },
-                new Actor { Id = 20, Name = "Ian", Surname = "McKellen" },
-                new Actor { Id = 21, Name = "John", Surname = "Travolta" },
-                new Actor { Id = 22, Name = "Uma", Surname = "Thurman" },
-                new Actor { Id = 23, Name = "Samuel", Surname = "L. Jackson" },
-                new Actor { Id = 24, Name = "Clint", Surname = "Eastwood" },
-                new Actor { Id = 25, Name = "Eli", Surname = "Wallach" },
-                new Actor { Id = 26, Name = "Lee", Surname = "Van Cleef" },
-                new Actor { Id = 27, Name = "Orlando", Surname = "Bloom" },
-                new Actor { Id = 28, Name = "Brad", Surname = "Pitt" },
-                new Actor { Id = 29, Name = "Edward", Surname = "Norton" },
-                new Actor { Id = 30, Name = "Meat", Surname = "Loaf" },
-                new Actor { Id = 31, Name = "Tom", Surname = "Hanks" },
-                new Actor { Id = 32, Name = "Robin", Surname = "Wright" },
-                new Actor { Id = 33, Name = "Gary", Surname = "Sinise" },
-                new Actor { Id = 34, Name = "Leonardo", Surname = "DiCaprio" },
-                new Actor { Id = 35, Name = "Joseph", Surname = "Gordon-Levitt" },
-                new Actor { Id = 36, Name = "Elliot", Surname = "Page" },
-                new Actor { Id = 37, Name = "David", Surname = "Attenborough" },
-                new Actor { Id = 38, Name = "Sigourney", Surname = "Weaver" },
-                new Actor { Id = 39, Name = "Nikolay", Surname = "Drozdov" },
-                new Actor { Id = 40, Name = "Bryan", Surname = "Cranston" },
-                new Actor { Id = 41, Name = "Aaron", Surname = "Paul" },
-                new Actor { Id = 42, Name = "Anna", Surname = "Gunn" },
-                new Actor { Id = 43, Name = "Scott", Surname = "Grimes" },
-                new Actor { Id = 44, Name = "Damian", Surname = "Lewis" },
-                new Actor { Id = 45, Name = "Ron", Surname = "Livingston" },
-                new Actor { Id = 46, Name = "Jessie", Surname = "Buckley" },
-                new Actor { Id = 47, Name = "Jared", Surname = "Harris" },
-                new Actor { Id = 48, Name = "Stellan", Surname = "Skarsgard" },
-                new Actor { Id = 49, Name = "Jessie", Surname = "Buckley" },
-                new Actor { Id = 50, Name = "Dominic", Surname = "West" },
-                new Actor { Id = 51, Name = "Lance", Surname = "Reddick" },
-                new Actor { Id = 52, Name = "Sonja", Surname = "Sohn" },
-                new Actor { Id = 53, Name = "Peter", Surname = "Drost" },
-                new Actor { Id = 54, Name = "Roger", Surname = "Horrocks" },
-                new Actor { Id = 55, Name = "Neil", Surname = "deGrasse Tyson" },
-                new Actor { Id = 56, Name = "Stoney", Surname = "Emshwiller" },
-                new Actor { Id = 57, Name = "Piotr", Surname = "Michael" },
-                new Actor { Id = 58, Name = "Neil", Surname = "deGrasse Tyson" },
-                new Actor { Id = 59, Name = "Dee", Surname = "Bradley Baker" },
-                new Actor { Id = 60, Name = "Zach", Surname = "Tyler" },
-                new Actor { Id = 61, Name = "Mae", Surname = "Whitman" },
-                new Actor { Id = 62, Name = "Carl", Surname = "Sagan" },
-                new Actor { Id = 63, Name = "Jaromir", Surname = "Hanzlik" },
-                new Actor { Id = 64, Name = "Jonathan", Surname = "Fahn" },
-                new Actor { Id = 65, Name = "Emilia", Surname = "Clarke" },
-                new Actor { Id = 66, Name = "Peter", Surname = "Dinklage" },
-                new Actor { Id = 67, Name = "Kit", Surname = "Harington" },
-                new Actor { Id = 68, Name = "James", Surname = "Gandolfini" },
-                new Actor { Id = 69, Name = "Lorraine", Surname = "Bracco" },
-                new Actor { Id = 70, Name = "Eddie", Surname = "Falco" }
+            modelBuilder.Entity<ActorEntity>().HasData(
+                new ActorEntity { Id = 1, FirstName = "Morgan", LastName = "Freeman" },
+                new ActorEntity { Id = 2, FirstName = "Bob", LastName = "Gunton" },
+                new ActorEntity { Id = 3, FirstName = "Tim", LastName = "Robbins" },
+                new ActorEntity { Id = 4, FirstName = "Marlon", LastName = "Brando" },
+                new ActorEntity { Id = 5, FirstName = "Al", LastName = "Pacino" },
+                new ActorEntity { Id = 6, FirstName = "James", LastName = "Caan" },
+                new ActorEntity { Id = 7, FirstName = "Robert", LastName = "De Niro" },
+                new ActorEntity { Id = 8, FirstName = "Robert", LastName = "Duvall" },
+                new ActorEntity { Id = 9, FirstName = "Christian", LastName = "Bale" },
+                new ActorEntity { Id = 10, FirstName = "Heath", LastName = "Ledger" },
+                new ActorEntity { Id = 11, FirstName = "Aaron", LastName = "Eckhart" },
+                new ActorEntity { Id = 12, FirstName = "Henry", LastName = "Fonda" },
+                new ActorEntity { Id = 13, FirstName = "Lee", LastName = "J. Cobb" },
+                new ActorEntity { Id = 14, FirstName = "Martin", LastName = "Balsam" },
+                new ActorEntity { Id = 15, FirstName = "Liam", LastName = "Neeson" },
+                new ActorEntity { Id = 16, FirstName = "Ralph", LastName = "Fiennes" },
+                new ActorEntity { Id = 17, FirstName = "Ben", LastName = "Kingsley" },
+                new ActorEntity { Id = 18, FirstName = "Elijah", LastName = "Wood" },
+                new ActorEntity { Id = 19, FirstName = "Viggo", LastName = "Mortensen" },
+                new ActorEntity { Id = 20, FirstName = "Ian", LastName = "McKellen" },
+                new ActorEntity { Id = 21, FirstName = "John", LastName = "Travolta" },
+                new ActorEntity { Id = 22, FirstName = "Uma", LastName = "Thurman" },
+                new ActorEntity { Id = 23, FirstName = "Samuel", LastName = "L. Jackson" },
+                new ActorEntity { Id = 24, FirstName = "Clint", LastName = "Eastwood" },
+                new ActorEntity { Id = 25, FirstName = "Eli", LastName = "Wallach" },
+                new ActorEntity { Id = 26, FirstName = "Lee", LastName = "Van Cleef" },
+                new ActorEntity { Id = 27, FirstName = "Orlando", LastName = "Bloom" },
+                new ActorEntity { Id = 28, FirstName = "Brad", LastName = "Pitt" },
+                new ActorEntity { Id = 29, FirstName = "Edward", LastName = "Norton" },
+                new ActorEntity { Id = 30, FirstName = "Meat", LastName = "Loaf" },
+                new ActorEntity { Id = 31, FirstName = "Tom", LastName = "Hanks" },
+                new ActorEntity { Id = 32, FirstName = "Robin", LastName = "Wright" },
+                new ActorEntity { Id = 33, FirstName = "Gary", LastName = "Sinise" },
+                new ActorEntity { Id = 34, FirstName = "Leonardo", LastName = "DiCaprio" },
+                new ActorEntity { Id = 35, FirstName = "Joseph", LastName = "Gordon-Levitt" },
+                new ActorEntity { Id = 36, FirstName = "Elliot", LastName = "Page" },
+                new ActorEntity { Id = 37, FirstName = "David", LastName = "Attenborough" },
+                new ActorEntity { Id = 38, FirstName = "Sigourney", LastName = "Weaver" },
+                new ActorEntity { Id = 39, FirstName = "Nikolay", LastName = "Drozdov" },
+                new ActorEntity { Id = 40, FirstName = "Bryan", LastName = "Cranston" },
+                new ActorEntity { Id = 41, FirstName = "Aaron", LastName = "Paul" },
+                new ActorEntity { Id = 42, FirstName = "Anna", LastName = "Gunn" },
+                new ActorEntity { Id = 43, FirstName = "Scott", LastName = "Grimes" },
+                new ActorEntity { Id = 44, FirstName = "Damian", LastName = "Lewis" },
+                new ActorEntity { Id = 45, FirstName = "Ron", LastName = "Livingston" },
+                new ActorEntity { Id = 46, FirstName = "Jessie", LastName = "Buckley" },
+                new ActorEntity { Id = 47, FirstName = "Jared", LastName = "Harris" },
+                new ActorEntity { Id = 48, FirstName = "Stellan", LastName = "Skarsgard" },
+                new ActorEntity { Id = 49, FirstName = "Jessie", LastName = "Buckley" },
+                new ActorEntity { Id = 50, FirstName = "Dominic", LastName = "West" },
+                new ActorEntity { Id = 51, FirstName = "Lance", LastName = "Reddick" },
+                new ActorEntity { Id = 52, FirstName = "Sonja", LastName = "Sohn" },
+                new ActorEntity { Id = 53, FirstName = "Peter", LastName = "Drost" },
+                new ActorEntity { Id = 54, FirstName = "Roger", LastName = "Horrocks" },
+                new ActorEntity { Id = 55, FirstName = "Neil", LastName = "deGrasse Tyson" },
+                new ActorEntity { Id = 56, FirstName = "Stoney", LastName = "Emshwiller" },
+                new ActorEntity { Id = 57, FirstName = "Piotr", LastName = "Michael" },
+                new ActorEntity { Id = 58, FirstName = "Neil", LastName = "deGrasse Tyson" },
+                new ActorEntity { Id = 59, FirstName = "Dee", LastName = "Bradley Baker" },
+                new ActorEntity { Id = 60, FirstName = "Zach", LastName = "Tyler" },
+                new ActorEntity { Id = 61, FirstName = "Mae", LastName = "Whitman" },
+                new ActorEntity { Id = 62, FirstName = "Carl", LastName = "Sagan" },
+                new ActorEntity { Id = 63, FirstName = "Jaromir", LastName = "Hanzlik" },
+                new ActorEntity { Id = 64, FirstName = "Jonathan", LastName = "Fahn" },
+                new ActorEntity { Id = 65, FirstName = "Emilia", LastName = "Clarke" },
+                new ActorEntity { Id = 66, FirstName = "Peter", LastName = "Dinklage" },
+                new ActorEntity { Id = 67, FirstName = "Kit", LastName = "Harington" },
+                new ActorEntity { Id = 68, FirstName = "James", LastName = "Gandolfini" },
+                new ActorEntity { Id = 69, FirstName = "Lorraine", LastName = "Bracco" },
+                new ActorEntity { Id = 70, FirstName = "Eddie", LastName = "Falco" }
             );
             #endregion
 
             #region Movies static data
-            modelBuilder.Entity<Movie>().HasData(
-                new Movie
+            _ = modelBuilder.Entity<VideoEntity>().HasData(
+                new VideoEntity
                 {
                     Id = 1,
                     Title = "The Suicide Squad",
@@ -97,9 +97,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     Overview = "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve " +
                     "prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused " +
                     "island of Corto Maltese.",
-                    Type = 0,
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 2,
                     Title = "Sweet Girl",
@@ -107,9 +107,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     ReleaseDate = new DateTime(2021, 8, 18),
                     Overview = "A devastated husband vows to bring justice to the people responsible for his wife's death while " +
                     "protecting the only family he has left, his daughter.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 3,
                     Title = "Jungle Cruise",
@@ -118,9 +118,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     Overview = "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon " +
                     "in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery " +
                     "that will change the future of medicine.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 4,
                     Title = "PAW Patrol: The Movie",
@@ -128,9 +128,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     ReleaseDate = new DateTime(2021, 8, 9),
                     Overview = "Ryder and the pups are called to Adventure City to stop Mayor Humdinger from turning the bustling " +
                     "metropolis into a state of chaos...",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 5,
                     Title = "Eggs Run",
@@ -138,9 +138,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     ReleaseDate = new DateTime(2021, 8, 12),
                     Overview = "A rooster and his fowl partner embark on a dangerous trip to the Congo to recover their stolen eggs " +
                     "from a group of Russian goons.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 6,
                     Title = "Black Widow",
@@ -150,9 +150,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     "dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring " +
                     "her down, Natasha must deal with her history as a spy and the broken relationships left in her wake long " +
                     "before she became an Avenger.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 7,
                     Title = "Space Jam: A New Legacy",
@@ -162,9 +162,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     "them home safe by leading Bugs, Lola Bunny and the whole gang of notoriously undisciplined Looney Tunes to " +
                     "victory over the A.I.'s digitized champions on the court. It's Tunes versus Goons in the highest-stakes " +
                     "challenge of his life.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 8,
                     Title = "Narco Sub",
@@ -172,9 +172,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     ReleaseDate = new DateTime(2021, 7, 22),
                     Overview = "A man will become a criminal to save his family.  Director: Shawn Welling  Writer: Derek H. Potts  " +
                     "Stars: Tom Vera, Tom Sizemore, Lee Majors",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 9,
                     Title = "Free Guy",
@@ -182,9 +182,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     ReleaseDate = new DateTime(2021, 8, 2),
                     Overview = "A bank teller called Guy realizes he is a background character in an open world video game called " +
                     "Free City that will soon go offline.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 10,
                     Title = "Infinite",
@@ -193,9 +193,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     Overview = "Evan McCauley has skills he never learned and memories of places he has never visited. Self-medicated " +
                     "and on the brink of a mental breakdown, a secret group that call themselves “Infinites” come to his rescue, " +
                     "revealing that his memories are real.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 11,
                     Title = "Beckett",
@@ -205,9 +205,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                     "accident forces him to run for his life across the country to clear his name but tensions escalate as the " +
                     "authorities close in and political unrest mounts which makes Beckett fall even deeper into a dangerous web " +
                     "of conspiracy.",
-                    Type = 0
+                    Type = VideoEnum.Movie
                 },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 12,
                      Title = "F9",
@@ -215,9 +215,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      ReleaseDate = new DateTime(2021, 5, 19),
                      Overview = "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've " +
                      "ever encountered: his forsaken brother.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 13,
                      Title = "The Boss Baby",
@@ -226,9 +226,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      Overview = "The Templeton brothers — Tim and his Boss Baby little bro Ted — have become adults and drifted " +
                      "away from each other. But a new boss baby with a cutting-edge approach and a can-do attitude is about to " +
                      "bring them together again … and inspire a new family business.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 14,
                      Title = "El mesero",
@@ -236,9 +236,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      ReleaseDate = new DateTime(2021, 7, 15),
                      Overview = "A waiter pretends to be an important businessman in order to reach the upper class through his " +
                      "entrepreneurial dreams.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 15,
                      Title = "Luca",
@@ -247,9 +247,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      Overview = "Luca and his best friend Alberto experience an unforgettable summer on the Italian Riviera. But " +
                      "all the fun is threatened by a deeply-held secret: they are sea monsters from another world just below the " +
                      "water’s surface.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 16,
                      Title = "The Tomorrow War",
@@ -261,18 +261,18 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      "fight. Among those recruited is high school teacher and family man Dan Forester. Determined to save the world " +
                      "for his young daughter, Dan teams up with a brilliant scientist and his estranged father in a desperate quest " +
                      "to rewrite the fate of the planet.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 17,
                      Title = "Breathless",
                      PosterPath = "https://image.tmdb.org/t/p/w500/oxNoVgbu2v9ETL93Kri1pw8osYf.jpg",
                      ReleaseDate = new DateTime(2021, 6, 11),
                      Overview = "",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 18,
                      Title = "The Last Mercenary",
@@ -281,9 +281,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      Overview = "A mysterious former secret service agent must urgently return to France when his estranged son  " +
                      "is falsely accused of arms and drug trafficking by the government, following a blunder by an overzealous " +
                      "bureaucrat and a mafia operation.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 19,
                      Title = "The Loud House Movie",
@@ -291,9 +291,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      ReleaseDate = new DateTime(2021, 8, 20),
                      Overview = "The Loud family travel to Scotland and discover they are descendants of Scottish royalty as " +
                      "they move into their giant ancestral castle.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 20,
                      Title = "Jolt",
@@ -303,9 +303,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      "an electrode vest. One day she makes a connection with Justin, who gives her a glimmer of hope for a " +
                      "shock-free future, but when he’s murdered she launches herself on a revenge-fueled rampage in pursuit of " +
                      "his killer.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 21,
                      Title = "Given",
@@ -313,9 +313,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      ReleaseDate = new DateTime(2021, 8, 22),
                      Overview = "The film centers on the love relationship among the band's bassist Haruki Nakayama, drummer " +
                      "Akihiko Kaji, and Akihiko's roommate and ex-boyfriend Ugetsu Murata.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 22,
                      Title = "Dilwale Dulhania Le Jayenge",
@@ -325,9 +325,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      "Baldev Singh, who in spite of being an NRI is very strict about adherence to Indian values. Simran has left for " +
                      "India to be married to her childhood fiancé. Raj leaves for India with a mission at his hands, to claim his lady " +
                      "love under the noses of her whole family. Thus begins a saga.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 23,
                      Title = "The Shawshank Redemption",
@@ -337,9 +337,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      "begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. " +
                      "During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older " +
                      "prisoner named Red -- for his integrity and unquenchable sense of hope.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 24,
                      Title = "The Godfather",
@@ -348,9 +348,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      Overview = "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. " +
                      "When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, " +
                      "Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                 new Movie
+                 new VideoEntity
                  {
                      Id = 25,
                      Title = "Gabriel's Inferno Part II",
@@ -359,9 +359,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                      Overview = "Professor Gabriel Emerson finally learns the truth about Julia Mitchell's identity, but his realization " +
                      "comes a moment too late. Julia is done waiting for the well-respected Dante specialist to remember her and wants nothing " +
                      "more to do with him. Can Gabriel win back her heart before she finds love in another's arms?",
-                     Type = 0
+                     Type = VideoEnum.Movie
                  },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 26,
                       Title = "Gabriel's Inferno Part III",
@@ -369,9 +369,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2020, 11, 19),
                       Overview = "The final part of the film adaption of the erotic romance novel Gabriel's Inferno written by an anonymous " +
                       "Canadian author under the pen name Sylvain Reynard.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 27,
                       Title = "Gabriel's Inferno",
@@ -380,9 +380,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       Overview = "An intriguing and sinful exploration of seduction, forbidden love, and redemption, Gabriel's Inferno is a " +
                       "captivating and wildly passionate tale of one man's escape from his own personal hell as he tries to earn the " +
                       "impossible--forgiveness and love.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 28,
                       Title = "Schindler's List",
@@ -390,9 +390,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(1993, 11, 30),
                       Overview = "The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis while " +
                       "they worked as slaves in his factory during World War II.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 29,
                       Title = "The Godfather: Part II",
@@ -400,9 +400,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(1974, 12, 20),
                       Overview = "In the continuing saga of the Corleone crime family, a young Vito Corleone grows up in Sicily and in 1910s " +
                       "New York. In the 1950s, Michael Corleone attempts to expand the family business into Las Vegas, Hollywood and Cuba.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 30,
                       Title = "Your Name.",
@@ -411,9 +411,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       Overview = "High schoolers Mitsuha and Taki are complete strangers living separate lives. But one night, they suddenly " +
                       "switch places. Mitsuha wakes up in Taki’s body, and he in hers. This bizarre occurrence continues to happen randomly, " +
                       "and the two must adjust their lives around each other.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 31,
                       Title = "After We Fell",
@@ -423,9 +423,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       "her family. The only person that she should be able to rely on is Hardin, who is furious when he discovers the massive " +
                       "secret that she's been keeping. Before Tessa makes the biggest decision of her life, everything changes because of " +
                       "revelations about her family.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 32,
                       Title = "Spirited Away",
@@ -433,9 +433,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2001, 7, 20),
                       Overview = "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious " +
                       "transformation, she must call upon the courage she never knew she had to free her family.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 33,
                       Title = "Black Beauty",
@@ -443,9 +443,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2020, 11, 27),
                       Overview = "Born free in the American West, Black Beauty is a horse rounded up and brought to Birtwick Stables, where she " +
                       "meets spirited teenager Jo Green. The two forge a bond that carries Beauty through the different chapters, challenges and adventures.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 34,
                       Title = "Parasite",
@@ -453,9 +453,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2019, 5, 30),
                       Overview = "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood " +
                       "until they get entangled in an unexpected incident.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 35,
                       Title = "The Green Mile",
@@ -464,9 +464,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       Overview = "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious " +
                       "power to heal people's ailments. When the cell block's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, " +
                       "he tries desperately to help stave off the condemned man's execution.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 36,
                       Title = "Hope",
@@ -474,9 +474,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2013, 10, 2),
                       Overview = "After 8-year-old So-won narrowly survives a brutal sexual assault, her family labors to help her heal while " +
                       "coping with their own rage and grief.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 37,
                       Title = "12 Angry Men",
@@ -485,9 +485,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       Overview = "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young " +
                       "Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a " +
                       "mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 38,
                       Title = "Star Wars: The Empire Strikes Back (Episode V)",
@@ -495,9 +495,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(1980, 5, 21),
                       Overview = "Darth Vader is adamant about turning Luke Skywalker to the dark side. Master Yoda trains Luke to become a " +
                       "Jedi Knight while his friends try to fend off the Imperial fleet.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 39,
                       Title = "Jurassic Hunt",
@@ -507,9 +507,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       "slaughter genetically recreated dinosaurs for sport using rifles, arrows, and grenades. After their guide is killed " +
                       "by raptors, the team tries to escape the park – but the hunters quickly become the hunted. Even worse, the park’s manager " +
                       "suspects Parker of being a spy and sends a hit squad after her. This battle’s about to become primitive!",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 40,
                       Title = "Don't Breathe 2",
@@ -518,9 +518,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       Overview = "The Blind Man has been hiding out for several years in an isolated cabin and has taken in and raised a " +
                       "young girl orphaned from a devastating house fire. Their quiet life together is shattered when a group of criminals " +
                       "kidnap the girl, forcing the Blind Man to leave his safe haven to save her.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 41,
                       Title = "SAS: Red Notice",
@@ -529,9 +529,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       Overview = "An off-duty SAS soldier, Tom Buckingham, must thwart a terror attack on a train running through the " +
                       "Channel Tunnel. As the action escalates on the train, events transpire in the corridors of power that may make the " +
                       "difference as to whether Buckingham and the civilian passengers make it out of the tunnel alive.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 42,
                       Title = "Cinderella",
@@ -539,9 +539,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2021, 9, 3),
                       Overview = "Cinderella, an orphaned girl with an evil stepmother, has big dreams and with the help of her Fabulous " +
                       "Godmother, she perseveres to make them come true.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 43,
                       Title = "Malignant",
@@ -549,9 +549,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2021, 9, 1),
                       Overview = "Madison is paralyzed by shocking visions of grisly murders, and her torment worsens as she discovers " +
                       "that these waking dreams are in fact terrifying realities.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 44,
                       Title = "The Blacklist",
@@ -559,9 +559,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2013, 9, 23),
                       Overview = "A wanted fugitive mysteriously surrenders himself to the FBI and offers to help them capture " +
                       "deadly criminals. His sole condition is that he will work only with the new profiler, Elizabeth Keen.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 45,
                       Title = "Star Wars: A New Hope (Episode IV)",
@@ -569,9 +569,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(1997, 5, 25),
                       Overview = "After Princess Leia, the leader of the Rebel Alliance, is held hostage by Darth Vader, Luke and Han Solo " +
                       "must free her and destroy the powerful weapon created by the Galactic Empire.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 46,
                       Title = "Star Wars: Return of the Jedi (Episode VI)",
@@ -579,9 +579,9 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(1983, 5, 25),
                       Overview = "Luke Skywalker attempts to bring his father back to the light side of the Force. At the same time, the rebels hatch a plan " +
                       "to destroy the second Death Star.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 47,
                       Title = "Star Wars: The Force Awakens (Episode VII)",
@@ -589,235 +589,235 @@ namespace JAP_Task_1_MoviesApi.Extensions
                       ReleaseDate = new DateTime(2015, 11, 17),
                       Overview = "A new order threatens to destroy the New Republic. Finn, Rey and Poe, backed by the Resistance and the Republic, " +
                       "must find a way to stop them and find Luke, the last surviving Jedi.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 48,
                       Title = "Star Wars: The Last Jedi (Episode VIII)",
                       PosterPath = "https://i.pinimg.com/originals/f4/5a/ea/f45aea75f65c0feb5cbe168f17a9a087.jpg",
                       ReleaseDate = new DateTime(2017, 11, 15),
                       Overview = "Rey seeks to learn the ways of the Jedi under Luke Skywalker, its remaining member, to reinvigorate the Resistance's war against the First Order.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 49,
                       Title = "Star Wars: The Rise of Skywalker (Episode IX)",
                       PosterPath = "https://lumiere-a.akamaihd.net/v1/images/star-wars-the-rise-of-skywalker-theatrical-poster-1000_ebc74357.jpeg?region=0%2C0%2C891%2C1372",
                       ReleaseDate = new DateTime(2019, 11, 20),
                       Overview = "The revival of Emperor Palpatine resurrects the battle between the Resistance and the First Order while the Jedi's legendary conflict with the Sith Lord comes to a head.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 50,
                       Title = "Star Wars: The Phantom Menace (Episode I)",
                       PosterPath = "https://play-lh.googleusercontent.com/sR1pzOxnF50WLR3vUqXYFvY01_tLD4XPn1RDHf0Xh-W04Vek_3iiZ98U7Db2JcmrqS8",
                       ReleaseDate = new DateTime(1999, 4, 19),
                       Overview = "Jedi Knights Qui-Gon Jinn and Obi-Wan Kenobi set out to stop the Trade Federation from invading Naboo. While travelling, they come across a gifted boy, Anakin, and learn that the Sith have returned.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 51,
                       Title = "Star Wars: Attack of the Clones (Episode II)",
                       PosterPath = "https://m.media-amazon.com/images/M/MV5BMDAzM2M0Y2UtZjRmZi00MzVlLTg4MjEtOTE3NzU5ZDVlMTU5XkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg",
                       ReleaseDate = new DateTime(2002, 4, 16),
                       Overview = "While pursuing an assassin, Obi Wan uncovers a sinister plot to destroy the Republic. With the fate of the galaxy hanging in the balance, the Jedi must defend the galaxy against the evil Sith.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 52,
                       Title = "Star Wars: Revenge of the Sith (Episode III)",
                       PosterPath = "https://play-lh.googleusercontent.com/mMyoXM8bf72KK-Udap4-hAvqqdXgn0AIBXkS8zejT0RXITIh8oK9a-SYIVk89CA0rHJi",
                       ReleaseDate = new DateTime(2005, 4, 19),
                       Overview = "Anakin joins forces with Obi-Wan and sets Palpatine free from th evil clutches of Count Doku. However, he falls prey to Palpatine and the Jedis' mind games and gives into temptation.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 53,
                       Title = "Avatar",
                       PosterPath = "https://i.pinimg.com/originals/17/aa/71/17aa718c1ab15b482505b8431cf596fc.jpg",
                       ReleaseDate = new DateTime(2009, 11, 17),
                       Overview = "Jake, who is paraplegic, replaces his twin on the Na'vi inhabited Pandora for a corporate mission. After the natives accept him as one of their own, he must decide where his loyalties lie.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 54,
                       Title = "The Good, the Bad and the Ugly",
                       PosterPath = "https://upload.wikimedia.org/wikipedia/en/4/45/Good_the_bad_and_the_ugly_poster.jpg",
                       ReleaseDate = new DateTime(1996, 12, 23),
                       Overview = "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 55,
                       Title = "Pulp Fiction",
                       PosterPath = "https://prod.miramax.digital/media/assets/Pulp-Fiction1.png",
                       ReleaseDate = new DateTime(1994, 10, 14),
                       Overview = "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 56,
                       Title = "The Lord of the Rings: The Fellowship of the Ring",
                       PosterPath = "https://images.moviesanywhere.com/198e228b071c60f5ad57e5f62fe60029/ff22cad6-2218-414d-b853-3f95d76905c7.jpg?h=375&resize=fit&w=250",
                       ReleaseDate = new DateTime(2001, 12, 19),
                       Overview = "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 57,
                       Title = "Fight Club",
                       PosterPath = "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
                       ReleaseDate = new DateTime(1999, 11, 11),
                       Overview = "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 58,
                       Title = "Forrest Gump",
                       PosterPath = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/37a5b434647543.56d846b10ca45.jpg",
                       ReleaseDate = new DateTime(1994, 7, 6),
                       Overview = "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 59,
                       Title = "Inception",
                       PosterPath = "https://m.media-amazon.com/images/I/81p+xe8cbnL._SY445_.jpg",
                       ReleaseDate = new DateTime(2010, 7, 22),
                       Overview = "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-                      Type = 0
+                      Type = VideoEnum.Movie
                   },
 
                   // tw shows
 
-                  new Movie
+                  new VideoEntity
                   {
                       Id = 60,
                       Title = "Planet Earth II",
                       Overview = "Wildlife documentary series with David Attenborough, beginning with a look at the remote islands which offer sanctuary to some of the planet's rarest creatures, to the beauty of cities, which are home to humans, and animals..",
                       PosterPath = "https://blackwells.co.uk/jacket/l/9781785943041.jpg",
                       ReleaseDate = new DateTime(2016, 11, 6),
-                      Type = 1
+                      Type = VideoEnum.TvShow
                   },
-                new Movie
+                new VideoEntity
                 {
                     Id = 61,
                     Title = "Planet Earth",
                     Overview = "Emmy Award-winning, 11 episodes, five years in the making, the most expensive nature documentary series ever commissioned by the BBC, and the first to be filmed in high definition.",
                     PosterPath = "https://m.media-amazon.com/images/I/91X9p6+58KL._SY445_.jpg",
                     ReleaseDate = new DateTime(2010, 4, 5),
-                    Type = 1,
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 62,
                     Title = "Breaking Bad",
                     Overview = "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.",
                     PosterPath = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
                     ReleaseDate = new DateTime(2008, 1, 20),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 63,
                     Title = "Band of Brothers",
                     Overview = "The story of Easy Company of the U.S. Army 101st Airborne Division and their mission in World War II Europe, from Operation Overlord to V-J Day.",
                     PosterPath = "https://i.dailymail.co.uk/i/pix/2017/02/13/01/3D24EF6B00000578-4215748-image-a-63_1486948627611.jpg",
                     ReleaseDate = new DateTime(2001, 9, 9),
-                    Type = 1,
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 64,
                     Title = "Chernobyl",
                     Overview = "In April 1986, an explosion at the Chernobyl nuclear power plant in the Union of Soviet Socialist Republics becomes one of the world's worst man-made catastrophes.",
                     PosterPath = "https://i.redd.it/bv5isr69yr531.png",
                     ReleaseDate = new DateTime(1986, 4, 26),
-                    Type = 1,
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 65,
                     Title = "The Wire",
                     Overview = "The Baltimore drug scene, as seen through the eyes of drug dealers and law enforcement.",
                     PosterPath = "https://tvshows.today/wp-content/uploads/the-wire-season-1-poster.jpg",
                     ReleaseDate = new DateTime(2008, 4, 9),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 66,
                     Title = "Blue Planet II",
                     Overview = "David Attenborough returns to the world's oceans in this sequel to the acclaimed documentary filming rare and unusual creatures of the deep, as well as documenting the problems our oceans face.",
                     PosterPath = "https://cdn.shopify.com/s/files/1/0747/3829/products/mL1006_1024x1024.jpg?v=1571445246",
                     ReleaseDate = new DateTime(2017, 10, 29),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 67,
                     Title = "Our Planet",
                     Overview = "Documentary series focusing on the breadth of the diversity of habitats around the world, from the remote Arctic wilderness and mysterious deep oceans to the vast landscapes of Africa and diverse jungles of South America.",
                     PosterPath = "https://www.penguin.co.uk/content/dam/prh/books/111/1115210/9780593079768.jpg.transform/PRHDesktopWide_small/image.jpg",
                     ReleaseDate = new DateTime(2019, 4, 5),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 68,
                     Title = "Cosmos: A Spacetime Odyssey",
                     Overview = "An exploration of our discovery of the laws of nature and coordinates in space and time.",
                     PosterPath = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5945/5945188_sa.jpg;maxHeight=640;maxWidth=550",
                     ReleaseDate = new DateTime(2014, 4, 9),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 69,
                     Title = "Avatar: The Last Airbender",
                     Overview = "In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar, and bring peace to the world.",
                     PosterPath = "https://images-na.ssl-images-amazon.com/images/I/914eUC4XPML.jpg",
                     ReleaseDate = new DateTime(2005, 2, 21),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 70,
                     Title = "Cosmos",
                     Overview = "Astronomer Carl Sagan leads us on an engaging guided tour of the various elements and cosmological theories of the universe.",
                     PosterPath = "https://www.themoviedb.org/t/p/original/4WJ9kNejI8apl3f8hMNwo8V3hGT.jpg",
                     ReleaseDate = new DateTime(1980, 12, 21),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 71,
                     Title = "Game of Thrones",
                     Overview = "Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.",
                     PosterPath = "https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_FMjpg_UX1000_.jpg",
                     ReleaseDate = new DateTime(2011, 4, 17),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 },
-                new Movie
+                new VideoEntity
                 {
                     Id = 72,
                     Title = "The Sopranos",
                     Overview = "New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek professional psychiatric counseling.",
                     PosterPath = "https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg",
                     ReleaseDate = new DateTime(1999, 1, 10),
-                    Type = 1
+                    Type = VideoEnum.TvShow
                 }
            );
             #endregion
@@ -826,30 +826,30 @@ namespace JAP_Task_1_MoviesApi.Extensions
             #region Admin user
             AuthService.CreatePasswordHash("admin", out byte[] passHash, out byte[] passSalt);
             DateTime now = DateTime.Now;
-            modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Username = "admin", FirstName = "Admin", LastName = "Admin", PasswordHash = passHash, PasswordSalt = passSalt, CreatedAt = now }
+            modelBuilder.Entity<UserEntity>().HasData(
+                new UserEntity { Id = 1, Username = "admin", FirstName = "Admin", LastName = "Admin", PasswordHash = passHash, PasswordSalt = passSalt, CreatedAt = now }
 
             );
             #endregion
 
             #region Ratings
-            modelBuilder.Entity<Rating>().HasData(
-                new Rating { Id = 1, Value = 4.6, MovieId = 1, UserId = 1 },
-                new Rating { Id = 2, Value = 4.5, MovieId = 2, UserId = 1 },
-                new Rating { Id = 3, Value = 4.5, MovieId = 3, UserId = 1 },
-                new Rating { Id = 4, Value = 4.5, MovieId = 4, UserId = 1 },
-                new Rating { Id = 5, Value = 4.4, MovieId = 5, UserId = 1 },
-                new Rating { Id = 6, Value = 4.35, MovieId = 6, UserId = 1 },
-                new Rating { Id = 7, Value = 4.3, MovieId = 7, UserId = 1 },
-                new Rating { Id = 8, Value = 4.2, MovieId = 8, UserId = 1 },
-                new Rating { Id = 9, Value = 4.2, MovieId = 9, UserId = 1 },
-                new Rating { Id = 10, Value = 4.2, MovieId = 10, UserId = 1 },
-                new Rating { Id = 11, Value = 4.2, MovieId = 60, UserId = 1 },
-                new Rating { Id = 12, Value = 4.2, MovieId = 61, UserId = 1 },
-                new Rating { Id = 13, Value = 4.2, MovieId = 62, UserId = 1 },
-                new Rating { Id = 14, Value = 4.2, MovieId = 63, UserId = 1 },
-                new Rating { Id = 15, Value = 4.2, MovieId = 64, UserId = 1 },
-                new Rating { Id = 16, Value = 4.2, MovieId = 65, UserId = 1 }
+            modelBuilder.Entity<RatingEntity>().HasData(
+                new RatingEntity { Id = 1, Value = 4.6, VideoEntityId = 1, UserEntityId = 1 },
+                new RatingEntity { Id = 2, Value = 4.5, VideoEntityId = 2, UserEntityId = 1 },
+                new RatingEntity { Id = 3, Value = 4.5, VideoEntityId = 3, UserEntityId = 1 },
+                new RatingEntity { Id = 4, Value = 4.5, VideoEntityId = 4, UserEntityId = 1 },
+                new RatingEntity { Id = 5, Value = 4.4, VideoEntityId = 5, UserEntityId = 1 },
+                new RatingEntity { Id = 6, Value = 4.35, VideoEntityId = 6, UserEntityId = 1 },
+                new RatingEntity { Id = 7, Value = 4.3, VideoEntityId = 7, UserEntityId = 1 },
+                new RatingEntity { Id = 8, Value = 4.2, VideoEntityId = 8, UserEntityId = 1 },
+                new RatingEntity { Id = 9, Value = 4.2, VideoEntityId = 9, UserEntityId = 1 },
+                new RatingEntity { Id = 10, Value = 4.2, VideoEntityId = 10, UserEntityId = 1 },
+                new RatingEntity { Id = 11, Value = 4.2, VideoEntityId = 60, UserEntityId = 1 },
+                new RatingEntity { Id = 12, Value = 4.2, VideoEntityId = 61, UserEntityId = 1 },
+                new RatingEntity { Id = 13, Value = 4.2, VideoEntityId = 62, UserEntityId = 1 },
+                new RatingEntity { Id = 14, Value = 4.2, VideoEntityId = 63, UserEntityId = 1 },
+                new RatingEntity { Id = 15, Value = 4.2, VideoEntityId = 64, UserEntityId = 1 },
+                new RatingEntity { Id = 16, Value = 4.2, VideoEntityId = 65, UserEntityId = 1 }
             );
             #endregion
         }

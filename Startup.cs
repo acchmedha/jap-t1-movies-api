@@ -31,10 +31,6 @@ namespace JAP_Task_1_MoviesApi
         {
             services.AddApplicationServices(Configuration);
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JAP_Task_1_MoviesApi", Version = "v1" });
-            });
             services.AddCors();
             services.AddIdentityServices(Configuration);
 

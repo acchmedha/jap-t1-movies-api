@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace JAP_Task_1_MoviesApi.Models
 {
-    public class Rating
+    public class RatingEntity
     {
         public int Id { get; set; }
         public double Value { get; set; }
-        public int MovieId { get; set; }
-        public int UserId { get; set; }
+        public int VideoEntityId { get; set; }
+        public int UserEntityId { get; set; }
     }
 }

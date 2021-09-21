@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JAP_Task_1_MoviesApi.Data;
@@ -13,9 +12,8 @@ namespace JAP_Task_1_MoviesApi.Controllers
 {
     public class UsersController : BaseApiController
     {
-        private readonly ApplicationDbContext _context;
-
-        public UsersController(ApplicationDbContext context)
+        private readonly Data.MoviesAppDbContext _context;
+        public UsersController(Data.MoviesAppDbContext context)
         {
             _context = context;
         }
@@ -23,7 +21,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
         // GET: api/Users
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserEntity>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
         }
@@ -31,7 +29,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
         // GET: api/Users/5
         [Authorize]
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserEntity>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
 
@@ -44,9 +42,8 @@ namespace JAP_Task_1_MoviesApi.Controllers
         }
 
         // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(int id, UserEntity user)
         {
             if (id != user.Id)
             {
@@ -76,7 +73,7 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
         // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<UserEntity>> PostUser(UserEntity user)
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -99,6 +96,5 @@ namespace JAP_Task_1_MoviesApi.Controllers
 
             return NoContent();
         }
-
     }
 }

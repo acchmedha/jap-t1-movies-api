@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace JAP_Task_1_MoviesApi.DTO
 {
-    public class ActorMovieDto
+    public class ActorVideoDto
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }
