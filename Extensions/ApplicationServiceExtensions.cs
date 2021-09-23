@@ -1,5 +1,8 @@
-﻿using JAP_Task_1_MoviesApi.Data;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using JAP_Task_1_MoviesApi.Data;
 using JAP_Task_1_MoviesApi.Helpers;
+using JAP_Task_1_MoviesApi.Requests;
 using JAP_Task_1_MoviesApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
+using MoviesApp.Api.Validators;
 using Swashbuckle.AspNetCore.Filters;
+using System.Reflection;
 
 namespace JAP_Task_1_MoviesApi.Extensions
 {
@@ -38,6 +43,11 @@ namespace JAP_Task_1_MoviesApi.Extensions
                 });
                 c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
+
+            //Fluent Validation
+            services.AddMvc().AddFluentValidation();
+            services.AddTransient<IValidator<UserLoginRequest>, UserLoginRequestValidator>();
+            services.AddTransient<IValidator<UserRegisterRequest>, UserRegisterRequestValidator>();
 
             return services;
         }

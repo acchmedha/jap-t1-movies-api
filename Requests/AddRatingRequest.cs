@@ -3,6 +3,6 @@
     public class AddRatingRequest
     {
         public double Value { get; set; }
-        public int MovieId { get; set; }
+        public int VideoId { get; set; }
     }
 }

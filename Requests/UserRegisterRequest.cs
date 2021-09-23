@@ -8,17 +8,9 @@ namespace JAP_Task_1_MoviesApi.Requests
 {
     public class UserRegisterRequest
     {
-        [Required]
         public string Username { get; set; }
-
-        [Required]
-        [StringLength(8, MinimumLength = 4)]
         public string Password { get; set; }
-        
-        [Required]
         public string FirstName { get; set; }
-
-        [Required]
         public string LastName { get; set; }
     }
 }

@@ -824,7 +824,7 @@ namespace JAP_Task_1_MoviesApi.Extensions
 
 
             #region Admin user
-            AuthService.CreatePasswordHash("admin", out byte[] passHash, out byte[] passSalt);
+            AuthService.CreatePasswordHash("password", out byte[] passHash, out byte[] passSalt);
             DateTime now = DateTime.Now;
             modelBuilder.Entity<UserEntity>().HasData(
                 new UserEntity { Id = 1, Username = "admin", FirstName = "Admin", LastName = "Admin", PasswordHash = passHash, PasswordSalt = passSalt, CreatedAt = now }
